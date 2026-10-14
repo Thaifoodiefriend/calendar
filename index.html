@@ -41,6 +41,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
 .calendar.simple .event-meta{display:none}.calendar.simple .event{padding:8px 9px 8px 11px;font-size:10.8px}.calendar.simple .day{min-height:126px}
 .day{min-height:144px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px;background:#fff;position:relative;cursor:pointer;transition:.12s}.day:nth-child(7n){border-right:0}.day:hover{background:#FFFDF4}.day.outside{background:#FAFAF8;color:#aaa;cursor:default}.day.weekend{background:#FDFDFC}
 .daynum{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;margin:0 0 8px auto;color:#1A1A1A}.day.has-event .daynum{background:#FFF1BE}
+.day.today{background:#F1FAF7;box-shadow:inset 0 0 0 3px var(--green);z-index:2}.day.today:hover{background:#EAF7F2}.day.today .daynum{background:var(--green);color:#fff}.day.today .day-label{display:block;color:var(--green);font-weight:700}
 .day-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}.day-label{font-size:10px;color:var(--muted);display:none}.day.has-event .day-label{display:block}
 .events{display:flex;flex-direction:column;gap:6px}.event{border:0;text-align:left;border-radius:10px;padding:8px 10px 8px 11px;font-size:11px;line-height:1.35;color:#fff;background:var(--red);width:100%;position:relative;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.10);transition:.14s}.event:hover{transform:translateY(-1px);box-shadow:0 5px 12px rgba(14,14,14,.15)}
 .event:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:rgba(255,255,255,.46)}.event-title{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.event-meta{display:block;font-size:9.5px;opacity:.82;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -71,8 +72,48 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
 #liveRundownTable th,#liveRundownTable td{border-bottom:1px solid var(--border);vertical-align:top}
 #liveRundownTable td{padding:10px 11px;font-size:11px;line-height:1.5}
 #liveRundownTable tbody tr:hover{background:#FFFDF4}
+.live-editing [data-live-edit]{outline:2px dashed #EC0001;outline-offset:4px;border-radius:4px;cursor:text;background:#fffdf2}
+.live-editing [data-live-edit]:focus{outline-style:solid;background:#fff}
+.live-edit-actions{display:flex;gap:8px;flex-wrap:wrap}
 .live-time{font-weight:700;white-space:nowrap}
 .live-product{font-weight:600}
+
+/* Readability refresh — clearer hierarchy without changing calendar data */
+body{background:#F5F7F6}
+.topbar{padding:13px 24px;background:linear-gradient(105deg,#B90001 0%,#EC0001 58%,#FF3435 100%);box-shadow:0 8px 24px rgba(114,0,0,.16)}
+.topbar-inner{max-width:1680px}.brandmark{width:44px;height:44px;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.brand h1{font-size:19px}.brand p{font-size:11px;opacity:.9}.main-tabs .btn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.45)}
+.workspace{max-width:1680px;padding:24px 28px 48px}
+.summary{grid-template-columns:minmax(0,1.35fr) minmax(340px,.65fr);gap:16px;margin-bottom:16px}
+.calendar-summary{grid-template-columns:1fr}.calendar-summary .primary p{max-width:100%}.calendar-summary .card.primary{min-height:150px;display:flex;flex-direction:column;justify-content:center}
+.card{border-color:#E4E9E6;border-radius:20px;padding:20px 22px;box-shadow:0 8px 26px rgba(21,46,37,.055)}
+.card.primary{background:linear-gradient(120deg,#111 0%,#242725 72%,#1B4438 100%)}
+.card h2{font-size:24px;line-height:1.35;margin:6px 0}.card p{font-size:13px;line-height:1.65}
+.stats{gap:10px;margin-top:16px}.stat{padding:12px 13px;border:1px solid rgba(0,0,0,.035)}.primary .stat{border-color:rgba(255,255,255,.08)}
+.stat strong{font-size:21px;margin-bottom:4px}.stat span{font-size:11px}
+.toolbar{position:sticky;top:79px;z-index:35;border-color:#DDE5E1;border-radius:18px;padding:12px 14px;margin-bottom:14px;box-shadow:0 10px 30px rgba(22,50,41,.09)}
+.month-title{font-size:22px;min-width:190px;letter-spacing:-.02em}.nav{width:42px;height:42px;font-size:21px;border-color:#D9E2DE}
+.btn-red,.btn-light{min-height:42px;padding:10px 15px;font-weight:600}.btn-light{border-color:#D9E2DE}
+.search{min-width:270px;min-height:42px;background:#F4F7F5;border-color:#E1E8E4}.search input{font-size:12px}
+.select{min-height:42px;border-color:#D9E2DE;background:#fff;padding:9px 12px}.view-toggle{padding:3px;background:#F1F4F2;border-radius:999px}.seg{border:0;background:transparent;padding:8px 12px}.seg.active{box-shadow:0 2px 7px rgba(0,0,0,.08)}
+.legend{gap:8px;margin-bottom:10px}.legend-chip{border:1px solid #E0E7E3;padding:7px 11px;box-shadow:0 2px 6px rgba(21,46,37,.025)}.legend-chip:hover{border-color:#9FC2B6;background:#F2FAF7}
+.helper-note{margin:2px 0 14px 3px;color:#53645D}
+.calendar-shell{border-color:#DDE5E1;border-radius:20px;box-shadow:0 12px 34px rgba(21,46,37,.07)}
+.weekdays{position:static;background:#EEF4F1;border-bottom-color:#D6E1DC}.weekday{padding:13px 10px;font-size:12px;color:#31443D;border-right-color:#DDE5E1}.weekday:nth-last-child(-n+2){color:#B90001}
+.day{min-height:174px;padding:11px;border-color:#E4EAE7}.day.weekend{background:#FCFDFD}.day:hover{background:#FFFBEF}
+.day-head{margin-bottom:8px}.daynum{width:32px;height:32px;font-size:13px;margin:0 0 8px auto}.day-label{font-size:10px}
+.events{gap:7px}.event{border-radius:9px;padding:9px 11px 9px 12px;font-size:11.5px;line-height:1.42;box-shadow:0 3px 8px rgba(0,0,0,.10)}
+.event-title{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.event-meta{font-size:9.8px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.event{touch-action:none;-webkit-user-select:none;user-select:none;cursor:pointer}.event.long-press-ready{transform:scale(.98);filter:brightness(.96)}.event.dragging-source{opacity:.38}
+.event.has-check{padding-left:34px}.event-check{position:absolute;left:10px;top:10px;width:14px;height:14px;margin:0;accent-color:#006149;cursor:pointer;z-index:3}.event.completed{opacity:.48;filter:saturate(.38) brightness(1.12);box-shadow:none}.event.completed:hover{opacity:.64;filter:saturate(.48) brightness(1.08)}.event.completed .event-title{text-decoration:line-through;text-decoration-thickness:1px;text-underline-offset:2px}.event.completed .event-meta{opacity:.62}
+.day.drag-target{background:#E7F8F1!important;box-shadow:inset 0 0 0 3px var(--green);z-index:4}.day.drag-origin{background:#FFF8DF}
+.drag-ghost{position:fixed;z-index:300;pointer-events:none;max-width:240px;padding:9px 12px;border-radius:10px;background:#111;color:#fff;font-size:11px;font-weight:600;line-height:1.35;box-shadow:0 12px 28px rgba(0,0,0,.28);transform:translate(12px,12px);opacity:.94}
+.drag-hint{position:fixed;left:50%;bottom:22px;z-index:301;transform:translateX(-50%);background:#006149;color:#fff;padding:8px 13px;border-radius:999px;font-size:11px;font-weight:600;box-shadow:0 8px 20px rgba(0,97,73,.24);pointer-events:none}
+.calendar.simple .day{min-height:154px}.calendar.simple .event{padding:9px 10px 9px 12px;font-size:11.2px}.calendar.simple .event.has-check{padding-left:36px}.calendar.simple .event-title{-webkit-line-clamp:2}
+.more-link{padding:7px 9px;background:#EDF6F2;font-size:10.5px}
+.promo-only{display:none}.promotion-mode .promo-only{display:flex}.promotion-mode .detail-box.promo-only{display:block}.promotion-mode .promo-hidden{display:none!important}
+.approval-actions{gap:7px}.approve-btn,.reject-btn{border:0;border-radius:8px;padding:7px 11px;font-size:11px;line-height:1.2;font-weight:700}.approve-btn{background:#006149;color:#fff}.reject-btn{background:#FFF0F0;color:#B40000;border:1px solid #F0B6B6}.approve-btn.active{box-shadow:0 0 0 2px rgba(0,97,73,.22)}.reject-btn.active{box-shadow:0 0 0 2px rgba(180,0,0,.16)}
+.promotion-mode #modalDate,.promotion-mode #modalSubtitle,.promotion-mode #modalChips{display:none}
 @media print{
   #calendarPage,.topbar,.summary,.toolbar,#detailBg,#dayBg,#editorBg,#settingsBg{display:none!important}
   #livePage{display:block!important;padding:0}
@@ -80,7 +121,9 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
   #liveRundownTable{min-width:0!important;font-size:9px}
 }
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(30px);background:var(--black);color:#fff;padding:10px 14px;border-radius:999px;font-size:11px;opacity:0;pointer-events:none;transition:.22s;z-index:200}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-@media(max-width:1050px){.summary{grid-template-columns:1fr}.calendar-shell{overflow-x:auto}.weekdays,.calendar{min-width:1050px}.topbar{position:relative}}@media(max-width:720px){.topbar{padding:14px}.topbar-inner{align-items:flex-start;flex-direction:column}.actions{justify-content:flex-start}.workspace{padding:12px 10px 26px}.toolbar .spacer{display:none}.search{order:5;width:100%;min-width:0}.select{flex:1;min-width:145px}.detail-grid,.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.primary p{max-width:100%}}
+@media(max-width:1200px){.toolbar{position:relative;top:auto}.search{order:8;flex:1 1 100%}}
+@media(max-width:1050px){.summary{grid-template-columns:1fr}.calendar-shell{overflow-x:auto}.weekdays,.calendar{min-width:1050px}.topbar{position:relative}.workspace{padding:18px 16px 36px}}
+@media(max-width:720px){.topbar{padding:13px}.topbar-inner{align-items:flex-start;flex-direction:column}.brandmark{width:40px;height:40px}.brand h1{font-size:17px}.actions{justify-content:flex-start;width:100%}.main-tabs .btn{min-width:0;flex:1}.workspace{padding:12px 9px 28px}.card{padding:17px 16px}.card h2{font-size:21px}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.stat{padding:10px 8px}.stat strong{font-size:17px}.toolbar{padding:10px}.toolbar .spacer{display:none}.month-title{order:-1;flex:1 1 100%;font-size:21px}.search{order:8;width:100%;min-width:0}.select{flex:1;min-width:138px}.view-toggle{width:100%;order:9}.view-toggle .seg{flex:1}.btn-red,.btn-light{flex:1}.detail-grid,.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.primary p{max-width:100%}.calendar-shell{border-radius:14px}.helper-note{font-size:10px}}
 </style>
 </head>
 <body>
@@ -95,13 +138,9 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
 </header>
 
 <main class="workspace" id="calendarPage">
- <section class="summary">
+ <section class="summary calendar-summary">
   <div class="card primary">
-   <div class="eyebrow">ZAAP CONTENT MASTER PLAN</div><h2 id="summaryTitle"></h2><p id="summaryDesc"></p>
-   <div class="stats"><div class="stat"><strong id="statEvents"></strong><span>คอนเทนต์</span></div><div class="stat"><strong id="statPromo"></strong><span>โปรโมชัน</span></div><div class="stat"><strong id="statChannels"></strong><span>New Channel</span></div></div>
-  </div>
-  <div class="card"><div class="eyebrow">EDITABLE CALENDAR</div><h2>แก้ไขได้จากหน้าเว็บ</h2><p>กดคอนเทนต์เพื่อดูรายละเอียด แล้วเลือก “แก้ไข” หรือกด “เพิ่มคอนเทนต์” ด้านบน สี ชื่อปฏิทิน และข้อความสรุปแต่ละเดือนแก้ได้จาก “ตั้งค่า”</p>
-   <div class="stats"><div class="stat"><strong id="allEventsCount"></strong><span>รายการทั้งหมด</span></div><div class="stat"><strong>2</strong><span>ช่องใหม่</span></div><div class="stat"><strong>Auto</strong><span>บันทึกในเครื่อง</span></div></div>
+   <div class="eyebrow">ZAAP CONTENT MASTER PLAN</div><h2 id="summaryTitle"></h2><p id="summaryTotal"></p>
   </div>
  </section>
 
@@ -143,18 +182,18 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
   <section class="summary">
     <div class="card primary">
       <div class="eyebrow">TIKTOK LIVE MASTER PLAN</div>
-      <h2>Live ทุกวันเสาร์ · 19:00–21:00</h2>
-      <p>แต่ละสัปดาห์มีธีมชัดเจน และทุกช่วง 5 นาทีต้องกลับมาที่สินค้า + โปร + CTA เพื่อไม่ให้ Live หลุดจากเป้าขาย</p>
+      <h2>Live ทุกวันเสาร์ · 18:55–21:00</h2>
+      <p>18:55 ขึ้น Live เพื่อพูดคุยดึงคน ก่อนเริ่ม Run down สินค้าเวลา 19:00 และรันต่อเนื่องโดยช่วงเวลาไม่ทับกันจนถึง 21:00</p>
       <div class="stats">
-        <div class="stat"><strong>2 ชม.</strong><span>ต่อ Live</span></div>
-        <div class="stat"><strong>24</strong><span>ช่วง × 5 นาที</span></div>
+        <div class="stat"><strong>2 ชม. 5 นาที</strong><span>ต่อ Live</span></div>
+        <div class="stat"><strong>20</strong><span>ช่วง Run down</span></div>
         <div class="stat"><strong>15</strong><span>เสาร์ ก.ย.–ธ.ค.</span></div>
       </div>
     </div>
     <div class="card">
       <div class="eyebrow">LIVE RULE</div>
       <h2>Theme ทำให้คนอยู่ · Product ทำให้คนซื้อ</h2>
-      <p>ธีมใช้เป็นฉากและเกม แต่ทุก 5 นาทีต้องมีสินค้าในตะกร้า มีการสาธิต/เล่าจุดเด่น และจบด้วย CTA กลับเข้าตะกร้าเสมอ</p>
+      <p>เริ่มดึงคนเวลา 18:55 จากนั้นรันสินค้าตาม SKU ราคา และช่วงเวลาที่กำหนด โดยทีม Live ต้องเตรียมตะกร้าให้พร้อมก่อนเปลี่ยนสินค้าแต่ละช่วง</p>
     </div>
   </section>
 
@@ -162,37 +201,82 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
     <div class="month-title">ธีม Live รายสัปดาห์</div>
     <div class="spacer"></div>
     <select class="select" id="liveDateSelect"></select>
+    <label class="hidden" id="liveDateEditWrap" style="font-size:12px;font-weight:800">
+      วันที่ Live
+      <input class="select" type="date" id="liveDateEdit" style="margin-left:6px">
+    </label>
+    <div class="live-edit-actions">
+      <button class="btn" id="editLiveBtn">✏️ แก้ไขข้อมูล Live</button>
+      <button class="btn-dark hidden" id="saveLiveBtn">บันทึกข้อมูล</button>
+      <button class="btn hidden" id="cancelLiveBtn">ยกเลิก</button>
+    </div>
     <button class="btn-dark" id="printLiveBtn">พิมพ์ Run down</button>
+  </section>
+
+  <section class="card" id="doubleDigitLivePlan" style="margin-bottom:14px;border:2px solid #EC0001">
+    <div class="eyebrow">DOUBLE DIGIT 7–11 LIVE PLAN</div>
+    <h2 style="margin-bottom:6px">แผน Live และ Content ช่วง 7–11 ตุลาคม 2569</h2>
+    <p>แผนเร่ง GMV Live ครอบคลุมช่องแก๊งค์น้องแซ่บ ช่องหลัก และช่องน้องแซ่บซ่าพากิน</p>
+
+    <div class="detail-grid" style="margin-top:14px">
+      <div class="detail-box">
+        <label>7–10 ต.ค. · ช่องแก๊งค์น้องแซ่บ</label>
+        <strong>พี่กวาง Live แยกครบทุกวัน</strong>
+        <p style="margin-top:6px">7 ต.ค. / 8 ต.ค. / 9 ต.ค. / 10 ต.ค.</p>
+      </div>
+      <div class="detail-box">
+        <label>11 ต.ค. · TikTok ช่องหลัก</label>
+        <strong>พี่กวาง Live 10:00–15:00 น.</strong>
+        <p style="margin-top:6px">รวมเวลา Live 5 ชั่วโมง</p>
+      </div>
+      <div class="detail-box">
+        <label>ช่องน้องแซ่บซ่าพากิน</label>
+        <strong>อุ๋งอิ๋งสลับทีม Live</strong>
+        <p style="margin-top:6px">พี่ทิวลิปไม่ลง Live ในช่วงนี้</p>
+      </div>
+      <div class="detail-box">
+        <label>กติกาเวลา Live</label>
+        <strong>ขั้นต่ำรอบละ 5 ชั่วโมงขึ้นไป</strong>
+        <p style="margin-top:6px">ล็อกผู้รับผิดชอบและเวลาให้ครบก่อนเริ่มแคมเปญ</p>
+      </div>
+    </div>
+
+    <div class="stats" style="margin-top:14px">
+      <div class="stat"><strong>60</strong><span>คอนเทนต์ GMV Live</span></div>
+      <div class="stat"><strong>42</strong><span>Hook Clips · 70%</span></div>
+      <div class="stat"><strong>18</strong><span>โปรเฉพาะ Live · 30%</span></div>
+    </div>
+    <div class="note" style="margin-top:12px">ทีม Content ต้องผลิตและลงคอนเทนต์ให้ครบ 60 ชิ้น โดย Hook Clips ใช้ดึงความสนใจและพาคนเข้า Live ส่วนคลิปโปรเฉพาะ Live ใช้แจ้งดีล เวลา และเหตุผลที่ควรเข้าชม Live</div>
   </section>
 
   <section class="card" style="margin-bottom:14px">
     <div class="eyebrow">WEEKLY LIVE THEME</div>
-    <h2 id="liveThemeTitle" style="margin-bottom:4px"></h2>
-    <p id="liveThemeDesc"></p>
+    <h2 id="liveThemeTitle" data-live-edit style="margin-bottom:4px"></h2>
+    <p id="liveThemeDesc" data-live-edit></p>
     <div class="chips" id="liveThemeChips" style="margin-top:12px"></div>
   </section>
   <section class="card" id="liveOutfitCard" style="margin-bottom:14px">
     <div class="eyebrow">LIVE LOOK & SET</div>
-    <h2 id="liveOutfitTitle">ธีมชุดที่จะใส่ใน Live</h2>
+    <h2 id="liveOutfitTitle" data-live-edit>ธีมชุดที่จะใส่ใน Live</h2>
     <div class="detail-grid" style="margin-top:12px">
-      <div class="detail-box"><label>ธีมชุด</label><strong id="liveOutfit"></strong></div>
-      <div class="detail-box"><label>Accessories</label><strong id="liveAccessories"></strong></div>
-      <div class="detail-box"><label>ฉาก / Props</label><strong id="liveSet"></strong></div>
-      <div class="detail-box"><label>บทบาททีม Live</label><strong id="liveHostRoles"></strong></div>
+      <div class="detail-box"><label>ธีมชุด</label><strong id="liveOutfit" data-live-edit></strong></div>
+      <div class="detail-box"><label>Accessories</label><strong id="liveAccessories" data-live-edit></strong></div>
+      <div class="detail-box"><label>ฉาก / Props</label><strong id="liveSet" data-live-edit></strong></div>
+      <div class="detail-box"><label>บทบาททีม Live</label><strong id="liveHostRoles" data-live-edit></strong></div>
     </div>
-    <div class="note" id="liveMetaNote"></div>
+    <div class="note" id="liveMetaNote" data-live-edit></div>
   </section>
 
   <section class="card" style="margin-bottom:14px">
     <div class="eyebrow">HOST OPENING SCRIPT</div>
-    <h2>สคริปต์เปิด Live 19:00</h2>
-    <div class="hook" id="liveOpeningScript"></div>
+    <h2>ช่วงเปิด Live 18:55–19:05</h2>
+    <div class="hook" id="liveOpeningScript" data-live-edit></div>
   </section>
 
   <section class="card" id="liveSourceCard" style="margin-bottom:14px">
     <div class="eyebrow">PRODUCT BASIS</div>
     <h2>สินค้าที่ใช้ทำ Run down รอบนี้</h2>
-    <p id="liveSourceText">รออัปเดตรายการสินค้าก่อนถึงวัน Live</p>
+    <p id="liveSourceText" data-live-edit>รออัปเดตรายการสินค้าก่อนถึงวัน Live</p>
   </section>
 
   <section class="calendar-shell" style="overflow:auto">
@@ -200,11 +284,11 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
     <table id="liveRundownTable" style="width:100%;border-collapse:collapse;min-width:980px">
       <thead>
         <tr style="background:#0E0E0E;color:#fff">
-          <th style="padding:11px;text-align:left">เวลา</th>
-          <th style="padding:11px;text-align:left">สินค้า</th>
-          <th style="padding:11px;text-align:left">มุมขาย</th>
-          <th style="padding:11px;text-align:left">Run down / Script</th>
-          <th style="padding:11px;text-align:left">CTA</th>
+          <th style="padding:11px;text-align:left">ลำดับที่</th>
+          <th style="padding:11px;text-align:left">ช่วงเวลา</th>
+          <th style="padding:11px;text-align:left">SKU ID สินค้า</th>
+          <th style="padding:11px;text-align:left">รายการสินค้าที่จะขึ้น</th>
+          <th style="padding:11px;text-align:left">ราคาขาย</th>
         </tr>
       </thead>
       <tbody id="liveRundownBody"></tbody>
@@ -213,8 +297,8 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
 
   <section class="card" style="margin-top:14px">
     <div class="eyebrow">CLOSING SCRIPT</div>
-    <h2>20:55–21:00 ปิด Live</h2>
-    <p id="liveClosingScript">“หมดเวลาการแข่งขันคืนนี้แล้ว 🏐 ก่อนปิดสนาม ใครเพิ่งเข้ามาให้เช็กตะกร้ารอบสุดท้ายนะคะ คืนนี้เราเล่นครบทั้งเซ็ตเห็ดขายดี น้ำพริก และ 3 รสเจใหม่ ใครยังเลือกไม่ถูกพิมพ์ถามไว้ได้เลย ขอบคุณทุกคนที่มาเชียร์ทีม ZAAP ด้วยกันตั้งแต่หนึ่งทุ่ม กด Follow ไว้ แล้วเสาร์หน้า 19:00 เจอกันธีมใหม่ค่ะ”</p>
+    <h2>20:54–21:00 รวม 6 ตะกร้าแรกและปิด Live</h2>
+    <p id="liveClosingScript" data-live-edit>“หมดเวลาการแข่งขันคืนนี้แล้ว 🏐 ก่อนปิดสนาม ใครเพิ่งเข้ามาให้เช็กตะกร้ารอบสุดท้ายนะคะ คืนนี้เราเล่นครบทั้งเซ็ตเห็ดขายดี น้ำพริก และ 3 รสเจใหม่ ใครยังเลือกไม่ถูกพิมพ์ถามไว้ได้เลย ขอบคุณทุกคนที่มาเชียร์ทีม ZAAP ด้วยกันตั้งแต่หนึ่งทุ่ม กด Follow ไว้ แล้วเสาร์หน้า 19:00 เจอกันธีมใหม่ค่ะ”</p>
   </section>
 </main>
 
@@ -222,11 +306,12 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
  <header class="modal-head" id="detailHead"><button class="close" data-close="detailBg">×</button><p id="modalDate"></p><h3 id="modalTitle"></h3><p id="modalSubtitle"></p></header>
  <div class="modal-body">
   <div class="chips" id="modalChips"></div>
-  <div class="detail-grid"><div class="detail-box"><label>แพลตฟอร์ม</label><strong id="detailPlatform"></strong></div><div class="detail-box"><label>ช่อง / บัญชี</label><strong id="detailChannel"></strong></div><div class="detail-box"><label>รูปแบบ</label><strong id="detailFormat"></strong></div><div class="detail-box"><label>เป้าหมาย</label><strong id="detailGoal"></strong></div><div class="detail-box"><label>สินค้าที่ดัน</label><strong id="detailProduct"></strong></div><div class="detail-box"><label>Benefit / Support ที่ใช้</label><strong id="detailBenefit"></strong></div></div>
-  <div class="section"><h4>แนวทางเนื้อหา</h4><p id="detailDesc"></p></div>
-  <div class="section"><h4>Hook 3 วินาทีแรก</h4><div class="hook" id="detailHook"></div></div>
-  <div class="section"><h4>CTA</h4><div class="cta" id="detailCTA"></div></div>
-  <div class="section"><h4>สถานะงาน</h4><div class="row-actions"><select class="select" id="statusSelect"><option value="planned">วางแผน</option><option value="shooting">กำลังถ่าย</option><option value="editing">กำลังตัด</option><option value="ready">พร้อมโพสต์</option><option value="posted">โพสต์แล้ว</option></select><button class="btn-dark" id="copyBrief">คัดลอกบรีฟ</button><button class="btn-light" id="editCurrent">แก้ไข</button><button class="btn-danger" id="deleteCurrent">ลบ</button></div></div>
+  <div class="detail-grid"><div class="detail-box"><label>แพลตฟอร์ม</label><strong id="detailPlatform"></strong></div><div class="detail-box promo-only"><label>ราคา / ส่วนลดโปรโมชั่น</label><strong id="detailPrice"></strong></div><div class="detail-box promo-hidden"><label>ช่อง / บัญชี</label><strong id="detailChannel"></strong></div><div class="detail-box promo-hidden"><label>รูปแบบ</label><strong id="detailFormat"></strong></div><div class="detail-box promo-hidden"><label>เป้าหมาย</label><strong id="detailGoal"></strong></div><div class="detail-box promo-hidden"><label>สินค้าที่ดัน</label><strong id="detailProduct"></strong></div><div class="detail-box promo-hidden"><label>Benefit / Support ที่ใช้</label><strong id="detailBenefit"></strong></div></div>
+  <div class="section"><h4>รายละเอียด</h4><p id="detailDesc"></p></div>
+  <div class="section promo-hidden"><h4>Hook 3 วินาทีแรก</h4><div class="hook" id="detailHook"></div></div>
+  <div class="section promo-hidden"><h4>CTA</h4><div class="cta" id="detailCTA"></div></div>
+  <div class="section promo-only"><h4>อนุมัติโปรโมชั่น</h4><div class="row-actions approval-actions"><button class="approve-btn" id="approvePromo">Approve</button><button class="reject-btn" id="rejectPromo">Non-approve</button></div></div>
+  <div class="section"><h4 class="promo-hidden">สถานะงาน</h4><div class="row-actions"><select class="select promo-hidden" id="statusSelect"><option value="planned">วางแผน</option><option value="shooting">กำลังถ่าย</option><option value="editing">กำลังตัด</option><option value="ready">พร้อมโพสต์</option><option value="posted">โพสต์แล้ว</option></select><button class="btn-dark promo-hidden" id="copyBrief">คัดลอกบรีฟ</button><button class="btn-light" id="editCurrent">แก้ไข</button><button class="btn-danger" id="deleteCurrent">ลบ</button></div></div>
  </div>
 </article></div>
 
@@ -245,18 +330,20 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
  <div class="modal-body">
   <div class="form-grid">
    <div class="field"><label>วันที่</label><input class="input" type="date" id="fDate"></div>
-   <div class="field"><label>ประเภท</label><input class="input" id="fType" list="typeList"><datalist id="typeList"><option>Promotion</option><option>Seasonal</option><option>Product</option><option>Trust</option><option>Education</option><option>Entertainment</option><option>Engagement</option><option>UGC</option><option>Social Proof</option><option>Branding</option><option>Lifestyle</option><option>Local</option><option>New Channel</option></datalist></div>
+   <div class="field"><label>ประเภท</label><select class="input" id="fType"><option value="Promotion">Promotion</option><option value="Seasonal">Seasonal</option><option value="Product">Product</option><option value="Trust">Trust</option><option value="Education">Education</option><option value="Entertainment">Entertainment</option><option value="Engagement">Engagement</option><option value="UGC">UGC</option><option value="Social Proof">Social Proof</option><option value="Branding">Branding</option><option value="Lifestyle">Lifestyle</option><option value="Local">Local</option><option value="New Channel">New Channel</option></select></div>
    <div class="field full"><label>ชื่อคอนเทนต์</label><input class="input" id="fTitle"></div>
    <div class="field"><label>แพลตฟอร์ม</label><select class="input" id="fPlatform"></select></div>
-   <div class="field"><label>ช่อง / บัญชี</label><input class="input" id="fChannel" list="channelList"><datalist id="channelList"><option>ZAAP Official</option><option>น้องแซ่บซ่าพากิน</option><option>ทั้งคู่</option><option>Facebook แซ่บปะล้ำปะเหลือ</option><option>Facebook OEM</option><option>LINE OA</option><option>LINE OEM</option></datalist></div>
-   <div class="field"><label>รูปแบบ</label><input class="input" id="fFormat"></div>
-   <div class="field"><label>เป้าหมาย</label><input class="input" id="fGoal"></div>
-   <div class="field"><label>สินค้าที่ดัน</label><input class="input" id="fProduct"></div>
-   <div class="field full"><label>Benefit / Support ที่ใช้</label><input class="input" id="fBenefit" placeholder="เช่น Affiliate 10% + Ads + Booth"></div>
-   <div class="field full"><label>รายละเอียด / แนวทางเนื้อหา</label><textarea class="textarea" id="fDesc"></textarea></div>
-   <div class="field full"><label>Hook 3 วินาทีแรก</label><textarea class="textarea" id="fHook"></textarea></div>
-   <div class="field full"><label>CTA</label><textarea class="textarea" id="fCTA"></textarea></div>
+   <div class="field promo-only"><label>ราคา / ส่วนลดโปรโมชั่น</label><input class="input" id="fPrice" placeholder="เช่น 359 บาท หรือ คูปอง 8%"></div>
+   <div class="field promo-hidden"><label>ช่อง / บัญชี</label><input class="input" id="fChannel" list="channelList"><datalist id="channelList"><option>ZAAP Official</option><option>น้องแซ่บซ่าพากิน</option><option>ทั้งคู่</option><option>Facebook แซ่บปะล้ำปะเหลือ</option><option>Facebook OEM</option><option>LINE OA</option><option>LINE OEM</option></datalist></div>
+   <div class="field promo-hidden"><label>รูปแบบ</label><input class="input" id="fFormat"></div>
+   <div class="field promo-hidden"><label>เป้าหมาย</label><input class="input" id="fGoal"></div>
+   <div class="field promo-hidden"><label>สินค้าที่ดัน</label><input class="input" id="fProduct"></div>
+   <div class="field full promo-hidden"><label>Benefit / Support ที่ใช้</label><input class="input" id="fBenefit" placeholder="เช่น Affiliate 10% + Ads + Booth"></div>
+   <div class="field full"><label>รายละเอียด</label><textarea class="textarea" id="fDesc"></textarea></div>
+   <div class="field full promo-hidden"><label>Hook 3 วินาทีแรก</label><textarea class="textarea" id="fHook"></textarea></div>
+   <div class="field full promo-hidden"><label>CTA</label><textarea class="textarea" id="fCTA"></textarea></div>
   </div>
+  <div class="promo-only" style="margin-top:16px;flex-direction:column;gap:8px"><label style="font-size:10px;color:var(--muted)">การอนุมัติ</label><div class="row-actions approval-actions"><button type="button" class="approve-btn" id="fApprovePromo">Approve</button><button type="button" class="reject-btn" id="fRejectPromo">Non-approve</button></div></div>
   <div class="row-actions" style="margin-top:16px"><button class="btn-red" id="saveEvent">บันทึกคอนเทนต์</button><button class="btn-light" data-close="editorBg">ยกเลิก</button></div>
  </div>
 </article></div>
@@ -264,6 +351,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
 <!-- Settings -->
 <div class="drawer-bg" id="settingsBg"><aside class="drawer">
  <div class="row-actions" style="justify-content:space-between"><div><h2>ตั้งค่าปฏิทิน</h2><div class="sub">ปรับสี ข้อความ และสำรองข้อมูล</div></div><button class="btn-light" data-close="settingsBg">ปิด</button></div>
+ <div class="form-section"><div class="eyebrow">EDITABLE CALENDAR</div><h2 style="font-size:20px;margin:5px 0">แก้ไขได้จากหน้าเว็บ</h2><p class="sub" style="line-height:1.7;margin-bottom:12px">กดคอนเทนต์เพื่อดูรายละเอียด แล้วเลือก “แก้ไข” หรือกด “เพิ่มคอนเทนต์” ด้านบน สี ชื่อปฏิทิน และข้อความสรุปแต่ละเดือนแก้ไขได้จากส่วนตั้งค่านี้</p><div class="stats"><div class="stat"><strong id="allEventsCount"></strong><span>รายการทั้งหมด</span></div><div class="stat"><strong>2</strong><span>ช่องใหม่</span></div><div class="stat"><strong>Auto</strong><span>บันทึกในเครื่อง</span></div></div></div>
  <div class="form-section"><h3>ชื่อปฏิทิน</h3><div class="field"><label>หัวเรื่อง</label><input class="input" id="sTitle"></div><div class="field" style="margin-top:9px"><label>คำอธิบาย</label><input class="input" id="sSubtitle"></div></div>
  <div class="form-section"><h3>สีหลัก</h3>
   <div class="field"><label>แดง</label><div class="colorrow"><input class="input" id="hexRed"><input type="color" id="colorRed"></div></div>
@@ -282,7 +370,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:
   </div>
   <div class="note">คุณเพิ่มแพลตฟอร์มใหม่ เปลี่ยนชื่อ เปลี่ยนสี หรือลบได้เอง เช่น Facebook, TikTok, YouTube หรือช่องทางใหม่ในอนาคต</div>
  </div>
- <div class="form-section"><h3>ข้อความสรุปแต่ละเดือน</h3>
+ <div class="form-section"><h3 id="monthSettingsTitle">ข้อความสรุปเดือน</h3>
   <div id="monthSettings"></div>
  </div>
  <div class="form-section"><h3>บันทึก / สำรองข้อมูล</h3>
@@ -300,6 +388,150 @@ const LIVE_RUNDOWNS = {"2026-09-19": [{"time": "19:00–19:05", "product": "SET 
 const LIVE_META = {"2026-09-19": {"outfitTitle": "ZAAP Volleyball Match Day", "outfit": "พิธีกร A: เสื้อกีฬาสีแดง + กางเกงกีฬาสีดำ / พิธีกร B: เสื้อกีฬาสีเหลืองหรือขาว + กางเกงกีฬาสีดำ / ทีมหลังกล้องใช้เสื้อดำหรือเขียวของแบรนด์", "accessories": "ที่คาดผมกีฬา, สนับเข่า, ปลอกแขน, นกหวีด 1 อัน, ลูกวอลเลย์บอล 1–2 ลูก", "set": "ทำป้าย Scoreboard “TEAM ZAAP” และ “TEAM SPICY”, ใช้ตาข่ายหรือเส้นเทปจำลองเน็ตด้านหลัง, โต๊ะสินค้าแบ่งฝั่งแดง/เหลือง", "hostRoles": "พิธีกร A = MC/ปิดการขาย/จับเวลา · พิธีกร B = ชิม/สาธิต/อ่านคอมเมนต์ · หลังกล้อง = ปักตะกร้า/อัปเดตคะแนน/แจ้งโปรจริงจากระบบ", "note": "หลีกเลี่ยงโลโก้ทีมชาติ สโมสร หรือการแข่งขันจริง ใช้ลุคกีฬาทั่วไปของแบรนด์"}};
 const DEFAULT_EVENTS = [{"date": "2026-09-20", "title": "ThaiMart เปิดหน้าร้าน — ช้อปแซ่บได้อีกช่องทาง", "type": "New Channel", "format": "Announcement / Shop Demo", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness", "product": "ภาพรวมสินค้า", "desc": "เปิดตัว ThaiMart เป็นอีกช่องทางสำหรับดูและสั่งซื้อสินค้าแซ่บปะล้ำปะเหลือ พร้อมโชว์หน้าร้านและหมวดสินค้าหลัก", "hook": "นอกจากช่องทางเดิม ตอนนี้ช้อปแซ่บผ่าน ThaiMart ได้แล้ว", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-09-20", "title": "เปิดตัว 3 รสเจใหม่บน Nextgen", "type": "Product", "format": "Launch Video / Product Reveal", "platform": "nextgen", "channel": "Nextgen", "goal": "Product Awareness", "product": "โนริสาหร่ายเจ / ต้มยำเจ / วิงซ์แซ่บเจ", "desc": "เปิดตัว 3 รสชาติใหม่สำหรับช่วงเจบน Nextgen ให้เห็นแพ็กสินค้าและแต่ละรสแบบชัด ๆ พร้อมบอกว่ามีให้เลือกตั้งแต่เดือนกันยายนถึงวันที่ 18 ตุลาคม 2569", "hook": "สายเจเตรียมเลือกทีม! 3 รสใหม่มาแล้ว โนริ ต้มยำ หรือวิงซ์แซ่บ?", "cta": "เข้า Nextgen แล้วเลือกรสที่อยากลองก่อนใคร"}, {"date": "2026-09-22", "title": "ลูกค้าใหม่ Nextgen ช้อปครั้งแรก ลด 50 บาท", "type": "Promotion", "format": "Promo Card / Short Video", "platform": "nextgen", "channel": "Nextgen", "goal": "New Customer Conversion", "product": "สินค้าบน Nextgen", "desc": "โปรโมตสำหรับลูกค้าใหม่: รับคูปองส่วนลด 50 บาท เมื่อช้อปครบ 150 บาท ลดทันที พร้อมพาคนเข้าไปดูดีลและร้านค้าบนแอป คอนเทนต์นี้เป็น Evergreen สามารถหยิบกลับมาใช้โปรโมตซ้ำได้ทุกเดือนตามช่วงที่โปรยังเปิดใช้งาน", "hook": "เพิ่งช้อป Nextgen ครั้งแรก? อย่าเพิ่งจ่าย ถ้ายังไม่ได้คูปอง 50 บาท", "cta": "ช้อปครบ 150 บาท แล้วใช้คูปองลดทันที 50 บาท"}, {"date": "2026-09-24", "title": "รู้จัก ThaiMart — อีกช่องทางสำหรับช้อปแซ่บ", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "แนะนำหน้าร้าน ThaiMart ให้ลูกค้ารู้ว่าสามารถเข้าดูสินค้าและสั่งซื้อแซ่บปะล้ำปะเหลือได้อีกช่องทาง", "hook": "ใครใช้ ThaiMart อยู่ ตอนนี้เจอร้านแซ่บแล้วนะ", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-09-24", "title": "รู้จัก ZAAP Member บน Nextgen — สมัครแล้วได้อะไร?", "type": "Education", "format": "Explainer / Screen Demo", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Member Sign-up", "product": "ZAAP Member / FLIP", "desc": "อธิบายระบบสมาชิกของร้านแบบง่าย ๆ ว่าสมัครแล้วเริ่มที่ ZAAP Bronze ทันที และมีโอกาสขยับเป็น Silver / Gold ตามยอดซื้อสะสม พร้อมสิทธิ์ส่วนลดสมาชิกและ Birthday Privilege ตาม Tier", "hook": "สมัคร Member แล้วได้อะไร ทำไมควรสมัครตั้งแต่ซื้อครั้งแรก?", "cta": "กดสมัคร ZAAP Member ไว้ก่อน เพื่อเริ่มสะสมสิทธิ์ตั้งแต่ Bronze"}, {"date": "2026-09-25", "title": "TikTok Payday — ปลายเดือนนี้กดตะกร้าให้คุ้ม", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Payday เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Payday รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-09-26", "title": "ZAAP Bronze — สมัครปุ๊บ เริ่มรับสิทธิ์ทันที", "type": "Education", "format": "Member Tier Spotlight", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Member Sign-up", "product": "ZAAP Bronze", "desc": "อธิบาย Bronze ให้ชัด: Tier 1 เริ่มต้นที่ยอดขั้นต่ำ 0 บาท ส่วนลดสมาชิก 5% ไม่จำกัดเพดาน ใช้ได้ 1 สิทธิ์ต่อคน และส่วนลดจะใช้ในบิลถัดไป อีกทั้ง Bronze ยังสามารถเข้าร่วมโปรโมชั่นอื่นได้", "hook": "เพิ่งสมัคร ZAAP Member? คุณเริ่มที่ Bronze และมีสิทธิ์ทันที", "cta": "สมัครสมาชิก แล้วเริ่มสะสมยอดเพื่อไป Silver"}, {"date": "2026-09-28", "title": "ZAAP Silver — ยอดสะสม 1,500 บาท ได้อะไรเพิ่ม?", "type": "Education", "format": "Member Tier Spotlight", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Member Upgrade", "product": "ZAAP Silver", "desc": "อธิบาย Silver: Tier 2 เมื่อยอดซื้อสะสมถึง 1,500 บาท ได้ส่วนลดสมาชิก 10% สูงสุด 200 บาท ใช้ 1 สิทธิ์ต่อคน และใช้ในบิลถัดไป โดย Silver ไม่เข้าร่วมโปรโมชั่นอื่น", "hook": "ซื้อสะสมถึง 1,500 บาทแล้ว สิทธิ์ของคุณจะเปลี่ยนแบบนี้", "cta": "เช็กยอดสะสมของคุณ แล้วดูว่าใกล้ขึ้น Silver หรือยัง"}, {"date": "2026-09-30", "title": "TikTok เอาสต็อกออก — สิ้นเดือนเคลียร์รอบสุดท้าย", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Stock Out เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Stock Out รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-09-30", "title": "ZAAP Gold — ยอดสะสม 3,500 บาท รับสิทธิ์สูงสุดของร้าน", "type": "Education", "format": "Member Tier Spotlight", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Member Upgrade", "product": "ZAAP Gold", "desc": "อธิบาย Gold: Tier 3 เมื่อยอดซื้อสะสมถึง 3,500 บาท ได้ส่วนลดสมาชิก 15% สูงสุด 300 บาท ใช้ 1 สิทธิ์ต่อคน และใช้ในบิลถัดไป โดย Gold ไม่เข้าร่วมโปรโมชั่นอื่น", "hook": "ถ้ายอดสะสมถึง 3,500 บาท คุณจะขึ้น ZAAP Gold แล้วได้อะไร?", "cta": "เช็กระดับสมาชิก แล้วสะสมยอดเพื่อรับสิทธิ์ Gold"}, {"date": "2026-10-01", "title": "Facebook ทายเลขท้าย 2 ตัว — เปิดเดือนเจ เมนูเจโปรดของคุณคืออะไร?", "type": "Engagement", "format": "Facebook Comment Activity", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement / Comment", "product": "ของรางวัล: น้ำพริกเห็ดเจ 150 กรัม 1 กระปุก", "desc": "ต้อนรับเดือนตุลาคมและบรรยากาศก่อนเทศกาลเจ ชวนลูกค้าเล่าเมนูเจที่ตัวเองชอบ พร้อมทายเลขท้าย 2 ตัวในคอมเมนต์ ของรางวัลรอบนี้เป็นน้ำพริกเห็ดเจ 150 กรัม 1 กระปุก เนื้อหาเน้นคุยเรื่องอาหารเจและสร้างคอมเมนต์บน Facebook", "hook": "ต้อนรับเดือนตุลา 🌱 ถ้าพูดถึงเทศกาลเจ เมนูเจที่คุณชอบที่สุดคืออะไร?", "cta": "คอมเมนต์ “เมนูเจที่ชอบ + เลขท้าย 2 ตัวที่คุณเลือก” ใต้โพสต์นี้"}, {"date": "2026-10-01", "title": "Shopee OTOP Kickoff — เปิดแคมเปญของดีลำปาง", "type": "Promotion", "format": "OTOP Awareness / Launch", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "OTOP Hero Set: น้ำพริก 150g + เห็ดกรอบ 100g", "benefit": "Booth + Ads + Marketplace Marketing + ค่าคอม 4%", "desc": "เปิดแคมเปญ OTOP ของกรมพัฒนาชุมชนบน Shopee ระยะโครงการ 1 ต.ค. 2569–30 ก.ย. 2570 วางแบรนด์เป็น OTOP ลำปาง เน้นมาตรฐาน ความเป็นของฝาก และสินค้ากินง่าย เพื่อใช้พื้นที่สื่อ/บูธและ Marketing Support ให้เต็มที่", "hook": "เริ่มแล้ว! OTOP ลำปางจากแซ่บปะล้ำปะเหลือ พร้อมเข้าแคมเปญ Shopee", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-10-01", "title": "ThaiMart พาช้อป — มีอะไรให้เลือกบ้าง", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "พาไล่หมวดเห็ดกรอบ น้ำพริก ขนาดและตัวเลือกต่าง ๆ ในหน้าร้านจริง", "hook": "เปิดร้านแซ่บบน ThaiMart แล้วมีอะไรอยู่ข้างในบ้าง?", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-10-01", "title": "เปิดเดือนตุลา — เดือนนี้แซ่บมีอะไรบ้าง", "type": "Branding", "format": "Montage 15–20 วิ", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Awareness", "product": "ภาพรวมแบรนด์", "desc": "เปิดธีมเดือนตุลาคมแบบเร็ว กระชับ โชว์ 3 ไฮไลต์หลัก: เทศกาลกินเจ, 10.10 และ Halloween พร้อมภาพสินค้าและบรรยากาศทีมงาน", "hook": "ตุลานี้ แซ่บมีเรื่องให้กิน ให้ช้อป และให้เล่นเพียบ!", "cta": "กดติดตามไว้ เดือนนี้มีทั้งโปรและคอนเทนต์พิเศษ", "platform": "facebook"}, {"date": "2026-10-02", "title": "เจาะรสใหม่: โนริสาหร่ายเจ", "type": "Product", "format": "Flavor Spotlight", "platform": "nextgen", "channel": "Nextgen", "goal": "Product Consideration", "product": "โนริสาหร่ายเจ", "desc": "โฟกัสรสโนริสาหร่ายเจแบบหนึ่งคลิปหนึ่งรส ให้เห็น texture และ mood การกินเล่น พร้อมย้ำว่าเป็นหนึ่งในรสใหม่ช่วงเจบน Nextgen", "hook": "ถ้าชอบกลิ่นสาหร่าย รสใหม่นี้น่าจะเป็นทีมคุณ", "cta": "เข้า Nextgen แล้วดูรสโนริสาหร่ายเจ"}, {"date": "2026-10-03", "title": "เห็ดกรอบกินกับอะไรได้บ้าง 3 เมนู", "type": "Product", "format": "Food Shot", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Product Use", "product": "เห็ดเข็มทองอบกรอบ", "desc": "โชว์ 3 วิธีทานเห็ดกรอบ เช่น โรยข้าว ก๋วยเตี๋ยว และสลัด เน้นภาพอาหารใกล้ ๆ และเสียงกรอบ", "hook": "เห็ดกรอบไม่ได้มีไว้กินเล่นอย่างเดียวนะ", "cta": "เซฟคลิปไว้ลองทำตาม แล้วเลือกดูรสที่ตะกร้า", "platform": "facebook"}, {"date": "2026-10-04", "title": "Shopee OTOP Affiliate Push #1 — เซ็ตชิมง่าย รีวิวต่อได้", "type": "Promotion", "format": "Affiliate Seeding", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "น้ำพริก 40g SET 3 + เห็ดกรอบ 100g", "benefit": "Affiliate 10% + ค่าคอม 4% + Ads", "desc": "เลือก SKU ที่ครีเอเตอร์รีวิวง่าย ราคาเข้าถึงง่าย และถ่ายคอนเทนต์กินจริงได้ชัด เพื่อใช้ Affiliate 10% ดึงครีเอเตอร์เข้ามาช่วยทำยอด พร้อมใช้ Ads ดันคลิป/สินค้าเด่น", "hook": "อยากให้ครีเอเตอร์หยิบไปรีวิว ต้องเริ่มจากเซ็ตที่เล่าเรื่องง่ายและกินให้ดูได้จริง", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-10-04", "title": "เปิดช่องทาง Nextgen — ซื้อแซ่บได้อีกช่องทางแล้ว", "type": "New Channel", "format": "Announcement / Screen Demo", "channel": "Nextgen", "goal": "Channel Awareness", "product": "ภาพรวมสินค้า", "desc": "ประกาศช่องทาง Nextgen แบบเข้าใจง่าย โชว์หน้าร้าน ขั้นตอนเข้าดูสินค้า และเหตุผลที่เพิ่มช่องทางใหม่ เพื่อให้ลูกค้าเลือกซื้อได้สะดวกขึ้น", "hook": "ต่อไปนี้ซื้อแซ่บได้เพิ่มอีก 1 ช่องทางแล้ว!", "cta": "ค้นหาร้านแซ่บปะล้ำปะเหลือบน Nextgen แล้วกดติดตามร้าน"}, {"date": "2026-10-05", "title": "เตรียมตัวเข้าเทศกาลเจ — ของกินติดบ้านที่ควรมี", "type": "Seasonal", "format": "Short Video", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "ดันสินค้าเจ", "product": "เห็ดกรอบรสดั้งเดิมเจ / น้ำพริกเห็ดเจ", "desc": "แนะนำของกินเจที่เก็บติดบ้านและหยิบทานง่าย เชื่อมสินค้าเจของแบรนด์กับมื้ออาหารจริง", "hook": "กินเจปีนี้ เตรียมของกินติดบ้านให้พร้อมก่อน", "cta": "ดูสินค้าเจของแซ่บที่ตะกร้า", "platform": "facebook"}, {"date": "2026-10-06", "title": "เจาะรสใหม่: ต้มยำเจ", "type": "Product", "format": "Flavor Spotlight", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Product Consideration", "product": "ต้มยำเจ", "desc": "ดันรสต้มยำเจด้วยภาพรสจัด เปรี้ยวเผ็ดหอมแบบไทย และสื่อว่าเทศกาลเจก็ยังเลือกกินรสจัดได้", "hook": "กินเจแล้วคิดถึงต้มยำ? รอบนี้มีรสต้มยำเจแล้ว", "cta": "กดดูรสต้มยำเจบน Nextgen"}, {"date": "2026-10-07", "title": "Shopee OTOP เจ — 3 รสเจใหม่ + น้ำพริกเห็ดเจ", "type": "Promotion", "format": "OTOP Seasonal / Vegan", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "โนริสาหร่ายเจ / ต้มยำเจ / วิงซ์แซ่บเจ + น้ำพริกเห็ดเจ", "benefit": "Booth + Marketplace Marketing + Affiliate 10%", "desc": "ใช้ช่วงก่อนเทศกาลเจสร้างธีม OTOP เจ ให้ 3 รสใหม่เป็นตัวดึง Traffic และมีน้ำพริกเห็ดเจเป็นสินค้าต่อบิล เหมาะส่งขอพื้นที่การตลาดเพราะมี Seasonal Story ชัด", "hook": "เทศกาลเจปีนี้ แซ่บทำ OTOP เจให้เลือกทั้งกินเล่นและกินกับมื้อหลัก", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-10-07", "title": "เบื้องหลังโรงงาน — ผลิตใหม่ แพ็กจริง", "type": "Trust", "format": "Factory BTS", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Trust", "product": "ภาพรวมสินค้า", "desc": "พาเดินดูขั้นตอนหลังการผลิต การแพ็ก การ QC และบรรยากาศโรงงานแบบจริงใจ", "hook": "กว่าน้ำพริก 1 กระปุกจะออกจากโรงงาน ต้องผ่านอะไรบ้าง?", "cta": "ติดตามไว้ เดี๋ยวพาเข้าดูโรงงานอีก", "platform": "facebook"}, {"date": "2026-10-08", "title": "ThaiMart ของกินเล่น — เลือกแบบไหนดี", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "แนะนำเห็ดกรอบหรือสินค้ากินเล่นในบริบทเลือกซื้อผ่าน ThaiMart โดยยึดสินค้าที่มีอยู่จริงในหน้าร้าน", "hook": "อยากได้ของกินเล่นจาก ThaiMart เริ่มดูตรงไหนก่อน?", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-10-08", "title": "ZAAP Member ประจำเดือน — สมัครฟรี เริ่ม Bronze ทันที", "type": "Education", "format": "Evergreen Member Content", "platform": "nextgen", "channel": "Nextgen", "goal": "Member Sign-up", "product": "Nextgen Member FLIP", "desc": "คอนเทนต์ Member ประจำเดือน เน้นว่าลูกค้าสมัครแล้วเริ่ม Bronze ที่ยอดขั้นต่ำ 0 บาท ได้ส่วนลดสมาชิก 5% สำหรับบิลถัดไป และ Bronze ยังสามารถเข้าร่วมโปรโมชั่นอื่นได้", "hook": "สมัคร Member ไม่ต้องรอยอดถึงหลักพัน เริ่ม Bronze ได้ทันที", "cta": "สมัคร ZAAP Member ก่อนช้อปรอบถัดไป"}, {"date": "2026-10-09", "title": "พรุ่งนี้ 10.10 ใครรอโปรอยู่?", "type": "Promotion", "format": "Teaser", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Traffic", "product": "สินค้าที่ร่วมโปร 10.10", "desc": "คลิปนับถอยหลัง 10.10 เน้นสินค้าเด่น เซ็ตคุ้ม และเวลาที่ควรเข้ามาดูไลฟ์", "hook": "อย่าเพิ่งกดซื้อวันนี้ ถ้าพรุ่งนี้มีโปร 10.10!", "cta": "กดติดตาม + ตั้งเตือน LIVE", "platform": "facebook"}, {"date": "2026-10-10", "title": "Facebook สนับสนุนแคมเปญ — 10.10 โปรใหญ่ — จัดเซ็ตคุ้ม", "type": "Promotion", "format": "Sale Video + Live", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Conversion", "product": "สินค้าร่วมโปร", "desc": "คอนเทนต์ขายหลักประจำแคมเปญ ใช้ราคา/ส่วนลด/เซ็ตที่คุ้มเป็นพระเอก และตัดคลิปสั้นระหว่างวันช่วยดึงคนเข้าไลฟ์", "hook": "10.10 รอบนี้ ซื้อแบบไหนคุ้มที่สุด?", "cta": "กดตะกร้า / เข้า LIVE ตอนนี้", "platform": "facebook"}, {"date": "2026-10-10", "title": "Shopee OTOP 10.10 — Double Day Hero Bundle", "type": "Promotion", "format": "Double Day", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "SET เห็ด 100g 3 ซอง + SET น้ำพริก 150g 2–3 กระปุก", "benefit": "Ads + Affiliate 10% + Marketplace Marketing + ค่าคอม 4%", "desc": "Double Day ให้ใช้ชุดที่เพิ่มมูลค่าต่อบิลและมีภาพสินค้าแน่นพอสำหรับแบนเนอร์ ดันทั้ง Ads และ Affiliate พร้อมกัน โดยเลือก Hero Bundle ที่คำนวณ GP แล้วเหมาะสม", "hook": "10.10 รอบนี้ จัด OTOP Hero Bundle ให้คุ้มกว่าเดิม", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-10-10", "title": "TikTok 10.10 Double Day — โปรใหญ่ประจำเดือน", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Double Day เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Double Day รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-10-11", "title": "เจาะรสใหม่: วิงซ์แซ่บเจ", "type": "Product", "format": "Flavor Spotlight", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Product Consideration", "product": "วิงซ์แซ่บเจ", "desc": "ดันรสวิงซ์แซ่บเจสำหรับคนชอบรสแซ่บ ใช้ reaction หรือ close-up เพื่อให้คลิปต่างจากอีกสองรส", "hook": "สายแซ่บแต่กินเจ — รสนี้ทำมาให้แล้ว", "cta": "กดดูวิงซ์แซ่บเจบน Nextgen"}, {"date": "2026-10-12", "title": "1 กระปุกกินกับอะไรได้บ้าง", "type": "Product", "format": "Food Pairing", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Usage", "product": "น้ำพริก 150 กรัม", "desc": "จับคู่น้ำพริกกับข้าว โจ๊ก ก๋วยเตี๋ยว และเมนูง่าย ๆ ให้คนเห็นภาพว่าซื้อไปแล้วใช้จริงได้หลายมื้อ", "hook": "มีน้ำพริกกระปุกเดียว เปลี่ยนมื้อธรรมดาได้กี่แบบ?", "cta": "คอมเมนต์เมนูที่อยากลองจับคู่", "platform": "facebook"}, {"date": "2026-10-13", "title": "Shopee OTOP Creator Review — 3 รสเจ Battle", "type": "Promotion", "format": "Affiliate / Review", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "เห็ดกรอบ 100g 3 รสเจ", "benefit": "Affiliate 10% + Ads", "desc": "ส่ง 3 รสเจให้ครีเอเตอร์ทำ Comparison / Blind Taste / เลือกรสโปรด เนื้อหาแบบเทียบรสเหมาะกับ Affiliate เพราะมีเหตุผลให้คลิกดูหลายตัวเลือก", "hook": "โนริ ต้มยำ วิงซ์แซ่บ — ให้ครีเอเตอร์เลือก MVP ของ 3 รสเจ", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-10-13", "title": "รวม 3 รสเจใหม่ — ทีมไหนชนะ?", "type": "Engagement", "format": "3-Flavors Comparison", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement / Conversion", "product": "โนริสาหร่ายเจ / ต้มยำเจ / วิงซ์แซ่บเจ", "desc": "นำ 3 รสกลับมาอยู่ในคลิปเดียวอีกครั้ง เปรียบเทียบ mood ของแต่ละรส แล้วให้คนเลือกตามสไตล์ตัวเอง", "hook": "ถ้าโนริคือสายละมุน ต้มยำคือสายไทย แล้ววิงซ์แซ่บคือสายไหน?", "cta": "เลือกทีม แล้วเข้า Nextgen ดูทั้ง 3 รส"}, {"date": "2026-10-14", "title": "Blind Test — เผ็ดมากหรือเผ็ดน้อย", "type": "Entertainment", "format": "Challenge", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement", "product": "น้ำพริกสูตรเผ็ดน้อย/เผ็ดมาก", "desc": "ให้พนักงานชิมแบบไม่เห็นฉลากแล้วทายระดับความเผ็ด เก็บ reaction จริงและตัดจังหวะขำ", "hook": "คิดว่าคนโรงงานจะแยกเผ็ดมากกับเผ็ดน้อยออกไหม?", "cta": "ทายก่อนดูเฉลย แล้วคอมเมนต์ทีมเผ็ดไหน", "platform": "facebook"}, {"date": "2026-10-15", "title": "Birthday Privilege — ทุก Tier ลด 10% สูงสุด 300 บาท", "type": "Promotion", "format": "Member Benefit Explainer", "platform": "nextgen", "channel": "Nextgen", "goal": "Member Value", "product": "Birthday Privilege", "desc": "สื่อสารสิทธิ์วันเกิดที่เหมือนกันทุก Tier: ลด 10% สูงสุด 300 บาท จำนวน 1 สิทธิ์ต่อคน และใช้ลดได้ทันที เน้นว่าเป็นสิทธิ์แยกจากส่วนลดตามระดับสมาชิก", "hook": "ไม่ว่าจะ Bronze, Silver หรือ Gold วันเกิดก็ได้สิทธิ์นี้เหมือนกัน", "cta": "สมัคร Member และกรอกข้อมูลให้ครบ เพื่อไม่พลาด Birthday Privilege"}, {"date": "2026-10-15", "title": "Shopee OTOP Mid Month — เจก่อนจบแคมเปญ", "type": "Promotion", "format": "Mid Month", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "น้ำพริกเห็ดเจ 150g + เห็ดกรอบ 100g รสเจ", "benefit": "Ads + Booth + Marketplace Marketing", "desc": "ใช้ Mid Month เป็นรอบเร่งยอดก่อนจบช่วงโปรโมตเจ 18 ต.ค. ดันสินค้าเจที่ยังมี Story สดใหม่ ขอพื้นที่สื่อ OTOP/Seasonal และเก็บยอดกลางเดือน", "hook": "กลางเดือนนี้ยังเจอยู่ ใครยังไม่ได้ลอง OTOP เจ รอบนี้คือช่วงเร่งก่อนจบ", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-10-15", "title": "ThaiMart ของฝาก — ซื้อกินเองก็ได้ ซื้อฝากก็ดี", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "วางสินค้าในบริบทของฝากและของกินติดบ้าน พร้อมพาลูกค้าเข้าหน้าร้าน ThaiMart", "hook": "ถ้ากำลังหาของฝากกินได้จริง ลองดูร้านนี้ใน ThaiMart", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-10-15", "title": "TikTok Mid Month — กลางเดือนมีดีล", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Mid Month เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Mid Month รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-10-16", "title": "Facebook ทายเลขท้าย 2 ตัว — เข้าโค้งช่วงเจ ใครยังทานเจอยู่บ้าง?", "type": "Engagement", "format": "Facebook Comment Activity", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement / Comment", "product": "ของรางวัล: น้ำพริกเห็ดเจ 150 กรัม 1 กระปุก", "desc": "ช่วงกลางเดือนตุลาคมเข้าสู่บรรยากาศเทศกาลเจเต็มตัว ชวนลูกค้าคุยว่าใครกำลังทานเจอยู่ ทานมาแล้วกี่วัน หรือมีเมนูไหนที่กินซ้ำบ่อย พร้อมทายเลขท้าย 2 ตัว ของรางวัลเป็นน้ำพริกเห็ดเจ 150 กรัม 1 กระปุก", "hook": "ช่วงนี้ใครกำลังทานเจอยู่บ้าง 🙋‍♀️ เมนูไหนที่กินวนแล้วไม่เบื่อ?", "cta": "คอมเมนต์ “ยังทานเจอยู่ / เมนูที่กินบ่อย + เลขท้าย 2 ตัว”"}, {"date": "2026-10-16", "title": "กินเจก็ยังอยากกินอะไรกรอบ ๆ แซ่บ ๆ", "type": "Seasonal", "format": "Problem / Solution", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "ดันสินค้าเจ", "product": "สินค้าเจ", "desc": "เริ่มจาก pain point ช่วงกินเจว่าอยากได้ของกรอบ กินง่าย แล้วเสนอสินค้าเจของแบรนด์เป็นหนึ่งในตัวเลือก", "hook": "กินเจ แต่ใจยังอยากได้อะไรกรอบ ๆ อยู่ใช่ไหม?", "cta": "กดดูสินค้าเจที่ตะกร้า", "platform": "facebook"}, {"date": "2026-10-18", "title": "Last Call เทศกาลเจ", "type": "Promotion", "format": "Sale + Urgency", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Conversion", "product": "สินค้าเจ", "desc": "ปิดช่วงเทศกาลเจด้วย Last Call พร้อมย้ำเมนูเจที่ยังสั่งได้และชวนซื้อเก็บไว้กินต่อหลังเทศกาล", "hook": "วันสุดท้ายของเทศกาลเจแล้ว ของโปรดหมดหรือยัง?", "cta": "สั่งรอบสุดท้ายวันนี้", "platform": "facebook"}, {"date": "2026-10-18", "title": "วันสุดท้ายแคมเปญ 3 รสเจใหม่บน Nextgen", "type": "Promotion", "format": "Last Call / Product Recap", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Conversion", "product": "โนริสาหร่ายเจ / ต้มยำเจ / วิงซ์แซ่บเจ", "desc": "ปิดช่วงโปรโมต 3 รสเจใหม่ตามแผนวันที่ 18 ตุลาคม รวมภาพทั้ง 3 รสและย้ำให้คนที่ยังไม่ได้ลองเข้าไปดูสินค้าบน Nextgen", "hook": "วันนี้วันสุดท้ายของช่วงโปรโมต 3 รสเจใหม่แล้ว", "cta": "เข้า Nextgen แล้วเลือกรสที่อยากลองวันนี้"}, {"date": "2026-10-19", "title": "รู้จัก ThaiMart — อีกช่องทางสำหรับช้อปสินค้าแซ่บ", "type": "New Channel", "format": "Announcement / How-to", "channel": "ThaiMart", "goal": "Channel Awareness", "product": "ภาพรวมสินค้า", "desc": "แนะนำ ThaiMart ว่าลูกค้าสามารถเข้าดูสินค้า เลือกเมนู และสั่งซื้อผ่านช่องทางนี้ได้ พร้อมภาพหน้าร้านจริง", "hook": "ใครใช้ ThaiMart อยู่ ตอนนี้เจอแซ่บแล้วนะ", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-10-20", "title": "Shopee OTOP Hero Product — น้ำพริก 150g ของฝากลำปาง", "type": "Promotion", "format": "OTOP Hero Product", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "น้ำพริก 150g หลายเมนู", "benefit": "Booth + Ads + Marketplace Marketing + ค่าคอม 4%", "desc": "หลังเทศกาลเจกลับมาเล่า OTOP แบบกว้างขึ้น ใช้น้ำพริก 150g เป็น Hero Product เพราะวางเป็นของฝาก/ติดครัวได้ และแตกคอนเทนต์รายเมนูต่อได้", "hook": "ถ้าจะเริ่มรู้จัก OTOP แซ่บปะล้ำปะเหลือ เริ่มจากน้ำพริก 150 กรัมได้เลย", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-10-20", "title": "ส่วนลด Member ใช้เมื่อไร? — ใช้ในบิลถัดไป", "type": "Education", "format": "FAQ / How It Works", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Member Education", "product": "ZAAP Member", "desc": "อธิบาย Flow ให้ลูกค้าเข้าใจว่า Bronze 5%, Silver 10% และ Gold 15% เป็นส่วนลดสมาชิกที่ใช้ในบิลถัดไป ไม่ใช่ลดทันทีในบิลที่ทำให้ได้สิทธิ์นั้น", "hook": "ทำไมสมัคร Member แล้วบิลนี้ยังไม่ลด? คำตอบอยู่ตรงนี้", "cta": "ซื้อรอบนี้เพื่อรับสิทธิ์ แล้วกลับมาใช้ส่วนลดในบิลถัดไป"}, {"date": "2026-10-20", "title": "อ่านคอมเมนต์ลูกค้า — ทำไมถึงซื้อซ้ำ", "type": "UGC", "format": "Review Reaction", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Social Proof", "product": "สินค้าที่มีรีวิวเด่น", "desc": "หยิบรีวิวจริงที่อ่านง่ายมาให้ทีมอ่านและ reaction พร้อมใส่ภาพสินค้าตามรีวิว", "hook": "ลูกค้าซื้อซ้ำเพราะอะไร? วันนี้ให้คอมเมนต์ตอบแทนเรา", "cta": "ใครเคยกินแล้ว คอมเมนต์เมนูโปรดไว้หน่อย", "platform": "facebook"}, {"date": "2026-10-22", "title": "ThaiMart เลือกน้ำพริกให้เข้ากับมื้ออาหาร", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "ทำคอนเทนต์สินค้าเชิงใช้งาน เช่น กินกับข้าว โจ๊ก ก๋วยเตี๋ยว แล้วจบด้วยการพาเข้า ThaiMart", "hook": "มื้อนี้มีข้าวร้อน ๆ แล้ว จะเลือกน้ำพริกอะไร?", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-10-22", "title": "ทำยังไงถึงยังกรอบ — เบื้องหลังการแพ็ก", "type": "Trust", "format": "Factory / Education", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Trust", "product": "น้ำพริก / เห็ดกรอบ", "desc": "เล่าหลักการแพ็กและการใช้ไนโตรเจนแบบเข้าใจง่าย เน้นเหตุผลเรื่องการรักษาความกรอบและคุณภาพสินค้า", "hook": "เคยสงสัยไหม ทำไมเปิดกระปุกแล้วยังกรอบ?", "cta": "เซฟไว้ดูเบื้องหลังโรงงานตอนต่อไป", "platform": "facebook"}, {"date": "2026-10-23", "title": "ลูกค้าใหม่ Nextgen — ช้อป 150 ลด 50", "type": "Promotion", "format": "Evergreen Promo", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "New Customer Conversion", "product": "สินค้าบน Nextgen", "desc": "คอนเทนต์ Evergreen ประจำเดือนสำหรับลูกค้าใหม่ เน้นคูปอง 50 บาทเมื่อช้อปครบ 150 บาท โดยควรตรวจเงื่อนไขโปรในแอปก่อนโพสต์จริงทุกครั้ง", "hook": "ถ้ายังไม่เคยช้อป Nextgen เดือนนี้ โปรลูกค้าใหม่อย่าปล่อยผ่าน", "cta": "ช้อปครบ 150 บาท เช็กคูปองลด 50 บาทก่อนจ่าย"}, {"date": "2026-10-24", "title": "ถ้ามีข้าวหนึ่งจาน จะเลือกน้ำพริกอะไร?", "type": "Engagement", "format": "Comment Game", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement", "product": "น้ำพริก 7 เมนู", "desc": "ตั้งโต๊ะข้าว 1 จาน แล้วให้คนเลือกน้ำพริกจากหลายเมนู ใช้ภาพ close-up และให้คอมเมนต์โหวต", "hook": "มีข้าวร้อน ๆ 1 จาน คุณหยิบกระปุกไหนก่อน?", "cta": "พิมพ์ชื่อเมนูเดียวที่เลือก", "platform": "facebook"}, {"date": "2026-10-25", "title": "Bronze / Silver / Gold ต่างกันยังไง?", "type": "Education", "format": "Tier Comparison / Infographic", "channel": "Nextgen", "goal": "Member Education", "product": "ZAAP Bronze / Silver / Gold", "desc": "เปรียบเทียบ 3 Tier ในคลิปเดียว: Bronze 0 บาท ลด 5% ไม่จำกัดเพดานและร่วมโปรอื่นได้, Silver 1,500 บาท ลด 10% สูงสุด 200 บาท, Gold 3,500 บาท ลด 15% สูงสุด 300 บาท โดยส่วนลดสมาชิกทุก Tier ใช้ในบิลถัดไปและ 1 สิทธิ์ต่อคน", "hook": "ซื้อเท่าไรถึงขึ้น Silver หรือ Gold? ดูตารางนี้คลิปเดียวจบ", "cta": "เซฟไว้เช็ก Tier ของตัวเองก่อนช้อปรอบถัดไป", "platform": "nextgen"}, {"date": "2026-10-25", "title": "Shopee OTOP Payday — ชุดคุ้มปลายเดือน", "type": "Promotion", "format": "Payday", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "เห็ดถัง 200g / รีฟิล 200g + น้ำพริก 150g SET", "benefit": "Ads + Affiliate 10% + Marketplace Marketing", "desc": "Payday ใช้สินค้าไซซ์ใหญ่และชุดคุ้มเพื่อยก AOV เช่น เห็ดถัง/รีฟิลและเซ็ตน้ำพริก พร้อมใช้ Affiliate ช่วยดึงยอด", "hook": "เงินเดือนออกแล้ว จัด OTOP แบบกินได้หลายมื้อหรือแบ่งกันทั้งบ้าน", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-10-25", "title": "TikTok Payday — โปรปลายเดือน", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Payday เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Payday รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-10-27", "title": "Bronze / Silver / Gold ต่างกันยังไง?", "type": "Education", "format": "Evergreen Platform Content", "platform": "nextgen", "channel": "Nextgen", "goal": "Member / Channel Engagement", "product": "ZAAP Member / สินค้าบน Nextgen", "desc": "สรุปเกณฑ์ 0 / 1,500 / 3,500 บาท และส่วนลด 5% / 10% / 15% พร้อมเพดานและเงื่อนไขการใช้", "hook": "ดูคลิปเดียว รู้เลยว่าตอนนี้คุณควรอยู่ Tier ไหน", "cta": "เข้า Nextgen แล้วเช็กสิทธิ์ / หน้าร้านก่อนช้อป"}, {"date": "2026-10-27", "title": "Shopee OTOP Affiliate Push #2 — เซ็ตทดลองหลายเมนู", "type": "Promotion", "format": "Affiliate Seeding", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "น้ำพริก 40g หลายเมนู / SET 3", "benefit": "Affiliate 10% + ค่าคอม 4%", "desc": "ทำ Affiliate รอบสองด้วยไซซ์ 40g เพราะเหมาะกับการรีวิวหลายเมนูในคลิปเดียว และช่วยพาลูกค้าใหม่เข้าร้านก่อนอัปเซลเป็นไซซ์ใหญ่", "hook": "อยากลองหลายเมนูในคลิปเดียว เริ่มจากไซซ์ 40 กรัม", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-10-27", "title": "เปิดแล้วเก็บยังไงให้อร่อยและกรอบ", "type": "Education", "format": "How-to", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Education", "product": "น้ำพริก / เห็ดกรอบ", "desc": "สอนวิธีปิดฝา เก็บให้แห้ง ใช้อุปกรณ์สะอาด และแนะนำการเก็บหลังเปิดตามฉลากสินค้า", "hook": "เปิดแล้วอย่าเก็บแบบนี้ ถ้ายังอยากให้กรอบอยู่", "cta": "เซฟคลิปนี้ไว้ใช้หลังเปิดกระปุก", "platform": "facebook"}, {"date": "2026-10-28", "title": "ThaiMart เหมาะกับใคร — ซื้อกินเองหรือซื้อฝากก็ได้", "type": "New Channel", "format": "Lifestyle + Shop Demo", "channel": "ThaiMart", "goal": "Channel Consideration", "product": "เห็ดกรอบ / น้ำพริก", "desc": "ทำคอนเทนต์เล่า use case ว่าลูกค้าสามารถใช้ ThaiMart เป็นอีกทางเลือกเวลาซื้อกินเอง ซื้อฝาก หรืออยากลองสินค้าไทยหลายรายการในช่องทางเดียว", "hook": "ถ้าปกติช้อปของกินไทยออนไลน์ ลองรู้จักช่องทางนี้ไว้", "cta": "กดดูหน้าร้านแซ่บบน ThaiMart"}, {"date": "2026-10-29", "title": "ThaiMart Weekly Pick — สัปดาห์นี้หยิบอะไรดี", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "เลือก 1–3 SKU มาเป็น Weekly Pick ตามสินค้าที่ต้องการดันในสัปดาห์นั้น โดยสามารถแก้ชื่อสินค้าได้ก่อนโพสต์", "hook": "สัปดาห์นี้ถ้าจะหยิบจาก ThaiMart แค่หนึ่งอย่าง เลือกอะไรดี?", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-10-29", "title": "เตรียม Halloween — น้องแซ่บเข้าครัวหลอน", "type": "Entertainment", "format": "Comedy", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Entertainment", "product": "สินค้าแบรนด์", "desc": "แต่งคาแรกเตอร์ Halloween แบบง่าย ๆ ในโรงงานหรือโรงอาหาร เล่นสถานการณ์หิวตอนดึกและจบด้วยสินค้า", "hook": "เมื่อกะดึกเจอสิ่งที่น่ากลัวที่สุดในโรงงาน...ของกินหมด!", "cta": "แท็กเพื่อนที่หิวตอนดึก", "platform": "facebook"}, {"date": "2026-10-30", "title": "Shopee OTOP Month-End — เติมของก่อนเข้าเดือนใหม่", "type": "Promotion", "format": "Month End", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "เห็ดกรอบ 100g + น้ำพริก 150g", "benefit": "Ads + Marketplace Marketing", "desc": "ปิดเดือนด้วยสินค้าหมุนง่าย ใช้ Ads เก็บ Traffic ที่ยังค้างจาก Payday และรีมาร์เก็ตสินค้าที่คนดูแต่ยังไม่ซื้อ", "hook": "ก่อนเข้าเดือนใหม่ เติมของกินติดบ้านแบบ OTOP ไว้ก่อน", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-10-30", "title": "TikTok เอาสต็อกออก — เคลียร์สต็อกก่อนเข้าเดือนใหม่", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Stock Out เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Stock Out รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-10-31", "title": "Halloween Challenge — เผ็ดจนหน้าหลอน", "type": "Entertainment", "format": "Challenge", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Viral", "product": "น้ำพริกสูตรเผ็ดมาก", "desc": "Challenge ชิมสูตรเผ็ดมาก เก็บ reaction แบบสนุก ไม่ฝืนความปลอดภัย และใช้พร็อพ Halloween", "hook": "Halloween นี้ไม่ต้องมีผี แค่ช้อนนี้ก็หน้าหลอนได้", "cta": "อยากให้ใครมาท้ารอบหน้า คอมเมนต์ชื่อไว้", "platform": "facebook"}, {"date": "2026-11-01", "title": "Facebook ทายเลขท้าย 2 ตัว — หน้าหนาวนี้ต้องมีน้ำพริกแซ่บ ๆ", "type": "Engagement", "format": "Facebook Comment Activity", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement / Comment", "product": "ของรางวัล: น้ำพริก 40 กรัม 3 ซอง — ดั้งเดิม / เจ / ไก่แซ่บ / คางกุ้ง", "desc": "เปิดเดือนพฤศจิกายนด้วยธีมลมหนาวและมื้ออาหารร้อน ๆ ชวนลูกค้าเลือกว่าน้ำพริกรสไหนเหมาะกับอากาศเย็นที่สุด พร้อมทายเลขท้าย 2 ตัว ของรางวัลเป็นน้ำพริกขนาด 40 กรัม จำนวน 3 ซอง โดยเลือกจากรสดั้งเดิม เจ ไก่แซ่บ และคางกุ้งตามรายการที่กำหนด", "hook": "ลมหนาวมาแล้ว 🍚 ถ้ามีข้าวสวยร้อน ๆ หนึ่งจาน คุณอยากหยิบน้ำพริกรสไหนก่อน?", "cta": "คอมเมนต์ “รสน้ำพริกที่เลือก + เลขท้าย 2 ตัว”"}, {"date": "2026-11-01", "title": "Hello November — อากาศเริ่มเย็น ของกินเล่นต้องพร้อม", "type": "Branding", "format": "Lifestyle", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Awareness", "product": "เห็ดกรอบ", "desc": "เปิดเดือนด้วย mood หน้าหนาวภาคเหนือ กินเล่นในออฟฟิศ/โรงงาน/ระหว่างเดินทาง", "hook": "ลมเย็นมาแล้ว ของกินเล่นข้างตัวยัง?", "cta": "เดือนนี้อยากดูคอนเทนต์อะไรจากน้องแซ่บ", "platform": "facebook"}, {"date": "2026-11-03", "title": "Shopee OTOP หน้าหนาว — น้ำพริกกับข้าวร้อน", "type": "Promotion", "format": "Seasonal OTOP", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "น้ำพริก 150g / 40g SET 3", "benefit": "Booth + Marketplace Marketing + Ads", "desc": "เริ่มหน้าหนาวด้วย Use Case ชัด ๆ: น้ำพริกกับข้าวร้อน โจ๊ก ก๋วยเตี๋ยว ทำให้ OTOP ไม่ได้เป็นแค่ของฝาก แต่เป็นของกินประจำบ้าน", "hook": "หน้าหนาวนี้ ข้าวร้อน ๆ คู่กับ OTOP แซ่บ เมนูไหนเข้ากันที่สุด?", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-11-03", "title": "เห็ดกรอบ 1 ซอง ทำเมนูอะไรได้บ้าง", "type": "Product", "format": "Food Hack", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Product Use", "product": "เห็ดเข็มทองอบกรอบ", "desc": "ต่อยอดเป็น topping 3–4 เมนู พร้อมถ่าย texture และเสียงกรอบให้เด่น", "hook": "เห็ดกรอบซองเดียว อย่าเพิ่งกินหมดก่อนดูคลิปนี้", "cta": "เซฟเมนูไว้ทำตาม", "platform": "facebook"}, {"date": "2026-11-04", "title": "สั่งแซ่บบน Nextgen ตั้งแต่เลือกสินค้าไปจนถึงใช้คูปอง", "type": "New Channel", "format": "Step-by-step Tutorial", "channel": "Nextgen", "goal": "Conversion", "product": "สินค้าบน Nextgen", "desc": "สาธิตเส้นทางลูกค้าตั้งแต่เข้าร้าน เลือกสินค้า เลือกจำนวน เก็บคูปอง และเข้าสู่หน้าชำระเงิน เพื่อให้คนที่ยังไม่เคยใช้ Nextgen กล้าลองสั่ง", "hook": "ไม่เคยซื้อผ่าน Nextgen? คลิปเดียวสั่งเป็น", "cta": "เซฟคลิปไว้ แล้วลองกดตามได้เลย"}, {"date": "2026-11-05", "title": "1 วันของคนในโรงงานแซ่บปะล้ำปะเหลือ", "type": "Branding", "format": "Day in Life", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Brand Human", "product": "ภาพรวมโรงงาน", "desc": "ตาม 1 คนในทีมตั้งแต่เริ่มงานจนจบวัน ให้เห็นความเป็นคนจริงและระบบทำงานจริง", "hook": "หนึ่งวันในโรงงานน้ำพริก เริ่มกี่โมงและจบกี่โมง?", "cta": "อยากตามฝ่ายไหนต่อ คอมเมนต์ไว้", "platform": "facebook"}, {"date": "2026-11-05", "title": "รู้จัก ThaiMart — อีกช่องทางสำหรับช้อปแซ่บ", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "แนะนำหน้าร้าน ThaiMart ให้ลูกค้ารู้ว่าสามารถเข้าดูสินค้าและสั่งซื้อแซ่บปะล้ำปะเหลือได้อีกช่องทาง", "hook": "ใครใช้ ThaiMart อยู่ ตอนนี้เจอร้านแซ่บแล้วนะ", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-11-06", "title": "Shopee OTOP Affiliate — เมนูหน้าหนาวใน 1 คลิป", "type": "Promotion", "format": "Affiliate Content", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "น้ำพริก 150g 2 เมนู + เห็ดกรอบ 100g", "benefit": "Affiliate 10% + Ads", "desc": "ให้ครีเอเตอร์ทำเมนูหน้าหนาว 1 มื้อแล้วใช้สินค้าหลาย SKU ในคลิปเดียว เพื่อเพิ่มโอกาสกดเข้าหน้าร้านและ Cross-sell", "hook": "หนึ่งมื้อหน้าหนาว ใช้ OTOP ได้กี่อย่าง? ให้ Affiliate ทำให้ดู", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-11-06", "title": "ลูกค้าใหม่ Nextgen — คูปอง 50 บาทยังต้องเช็ก", "type": "Promotion", "format": "Evergreen Promo", "platform": "nextgen", "channel": "Nextgen", "goal": "New Customer Conversion", "product": "สินค้าบน Nextgen", "desc": "หยิบโปรลูกค้าใหม่กลับมาเล่าอีกครั้งในเดือนพฤศจิกายน เปลี่ยนภาพและ Hook ได้ แต่คงแกนช้อปครบ 150 บาท ลด 50 บาท โดยตรวจโปรจริงก่อนเผยแพร่", "hook": "เดือนใหม่ ใครยังเป็นลูกค้าใหม่ Nextgen เช็กคูปองนี้ก่อน", "cta": "เก็บคูปองก่อนชำระ"}, {"date": "2026-11-07", "title": "เตรียม 11.11 — รอบนี้ซื้ออะไรคุ้มสุด", "type": "Promotion", "format": "Teaser", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Pre-Sale", "product": "เซ็ต 11.11", "desc": "เทียบชุดซื้อเดี่ยวกับซื้อเซ็ตแบบเข้าใจง่ายเพื่อปูการตัดสินใจก่อนวันแคมเปญ", "hook": "11.11 นี้ อย่าเลือกเซ็ตผิด ถ้าอยากได้คุ้มสุด", "cta": "เซฟไว้ก่อนวันโปร", "platform": "facebook"}, {"date": "2026-11-09", "title": "เปิดตะกร้า 3 เซ็ตสำหรับคน 3 แบบ", "type": "Promotion", "format": "Recommendation", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Conversion", "product": "เซ็ตสินค้า", "desc": "แนะนำเซ็ตตาม persona เช่น สายกินเล่น สายน้ำพริก และสายซื้อฝาก", "hook": "เลือกไม่ถูก? บอกเลยว่าคุณเหมาะกับเซ็ตไหน", "cta": "เลือกทีม 1 / 2 / 3 แล้วกดดูตะกร้า", "platform": "facebook"}, {"date": "2026-11-10", "title": "Countdown 11.11 + แจ้งเวลา LIVE", "type": "Promotion", "format": "Short Sale", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Traffic", "product": "สินค้าร่วมโปร", "desc": "คลิปสั้นมาก 8–12 วินาที แจ้งเวลาไลฟ์ ดีลเด่น และเตือนให้กดติดตาม", "hook": "อีกไม่กี่ชั่วโมง 11.11 เริ่มแล้ว", "cta": "ตั้งเตือน LIVE ตอนนี้", "platform": "facebook"}, {"date": "2026-11-10", "title": "Shopee OTOP 11.11 Warm-up — Wishlist Hero Sets", "type": "Promotion", "format": "Double Day Warm-up", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "SET เห็ด 3 ซอง / SET น้ำพริก 3 กระปุก", "benefit": "Ads + Affiliate 10% + Marketplace Marketing", "desc": "ก่อน 11.11 ให้ยิง Hero Set เข้า Wishlist/Cart ล่วงหน้า ใช้ Affiliate ปูรีวิวก่อนวันจริงและ Ads เก็บ Retargeting Audience", "hook": "ก่อน 11.11 เซฟ Hero Set ไว้ก่อน", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-11-11", "title": "Facebook สนับสนุนแคมเปญ — 11.11 Mega Sale + Live", "type": "Promotion", "format": "Live / Flash Clip", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Conversion", "product": "สินค้าร่วมโปร", "desc": "คอนเทนต์ขายหลักประจำวัน พร้อมตัดคลิป Flash Deal เป็นระยะเพื่อดึงทราฟฟิกเข้าห้องไลฟ์", "hook": "11.11 วันนี้เท่านั้น ดีลไหนหมดก่อนคือจบ!", "cta": "เข้า LIVE / กดตะกร้า", "platform": "facebook"}, {"date": "2026-11-11", "title": "Shopee OTOP 11.11 — Mega OTOP Day", "type": "Promotion", "format": "Double Day", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "Hero Bundle + Giftable OTOP Set", "benefit": "Ads + Affiliate 10% + Booth + Marketplace Marketing + ค่าคอม 4%", "desc": "วันใหญ่ให้ใช้ Benefit ครบที่สุด: Ads ดึง Traffic, Affiliate ปิดยอด, ขอ Booth/Marketing ทำภาพ OTOP และใช้ชุดสินค้าที่เหมาะซื้อฝากหรือซื้อหลายชิ้น", "hook": "11.11 วันนี้ ดัน OTOP แบบเต็มกำลังทั้ง Ads + Affiliate + Marketing", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-11-11", "title": "TikTok 11.11 Double Day — Mega Sale", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Double Day เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Double Day รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-11-12", "title": "ThaiMart พาช้อป — มีอะไรให้เลือกบ้าง", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "พาไล่หมวดเห็ดกรอบ น้ำพริก ขนาดและตัวเลือกต่าง ๆ ในหน้าร้านจริง", "hook": "เปิดร้านแซ่บบน ThaiMart แล้วมีอะไรอยู่ข้างในบ้าง?", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-11-12", "title": "ZAAP Bronze — ทำไม Tier เริ่มต้นถึงคุ้ม?", "type": "Education", "format": "Member Tier Spotlight", "platform": "nextgen", "channel": "Nextgen", "goal": "Member Sign-up", "product": "ZAAP Bronze", "desc": "ย้ำ Bronze ในมุมใช้งานจริง: เริ่มที่ 0 บาท ลดสมาชิก 5% แบบไม่จำกัดเพดาน ใช้ 1 สิทธิ์ต่อคนในบิลถัดไป และยังร่วมโปรโมชั่นอื่นได้ จึงเหมาะสำหรับสมาชิกใหม่", "hook": "เพิ่งเริ่มซื้อกับเรา Bronze มีข้อดีอะไรที่หลายคนมองข้าม?", "cta": "สมัคร Member แล้วเริ่มต้น Bronze ได้เลย"}, {"date": "2026-11-13", "title": "แกะออเดอร์หลัง 11.11 — ทุกคนซื้ออะไรกันเยอะสุด", "type": "Social Proof", "format": "Packing BTS", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Social Proof", "product": "สินค้าขายดีจากแคมเปญ", "desc": "ถ่ายยอดแพ็กจริงหลังแคมเปญ พร้อมนับเมนูที่เจอบ่อยหรือโชว์กองออเดอร์โดยไม่เผยข้อมูลลูกค้า", "hook": "หลัง 11.11 เมนูไหนโดนหยิบบ่อยที่สุด?", "cta": "เดาว่าอันดับ 1 คืออะไร ก่อนดูเฉลย", "platform": "facebook"}, {"date": "2026-11-15", "title": "TikTok Mid Month — ดีลกลางเดือน", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Mid Month เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Mid Month รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-11-15", "title": "คนเหนือกินน้ำพริกกับอะไรบ้าง", "type": "Local", "format": "Local Food", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Brand Personality", "product": "น้ำพริก", "desc": "เล่นกับอัตลักษณ์ลำปาง/ภาคเหนือ ผ่านเมนูจริงและภาษาพูดธรรมชาติ", "hook": "ถ้าเป็นคนเหนือ น้ำพริกไม่ได้กินกับข้าวอย่างเดียวนะ", "cta": "บ้านคุณกินกับอะไร คอมเมนต์มาแลกกัน", "platform": "facebook"}, {"date": "2026-11-16", "title": "Facebook ทายเลขท้าย 2 ตัว — ถูกหวยวันนี้ จะพาเธอไปดูโคมลอย", "type": "Engagement", "format": "Facebook Comment Activity / Seasonal", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement / Seasonal", "product": "ของรางวัล: เห็ดเข็มทองอบกรอบ 100 กรัม — ดั้งเดิม / วิงซ์แซ่บ", "desc": "ต้อนรับบรรยากาศเทศกาลลอยกระทงด้วยข้อความเล่นสนุกแบบโรแมนติก “ถูกหวยวันนี้ จะพาเธอไปดูโคมลอย” แล้วชวนลูกค้าเลือกรสเห็ดที่อยากพกไปกินระหว่างเที่ยว พร้อมทายเลขท้าย 2 ตัว ของรางวัลเป็นเห็ดเข็มทองอบกรอบ 100 กรัม รสดั้งเดิมหรือวิงซ์แซ่บ", "hook": "ถ้าถูกหวยวันนี้…จะพาเธอไปดูโคมลอย ✨ แล้วของกินระหว่างทางจะหยิบดั้งเดิมหรือวิงซ์แซ่บ?", "cta": "คอมเมนต์ “ดั้งเดิม หรือ วิงซ์แซ่บ + เลขท้าย 2 ตัว”"}, {"date": "2026-11-16", "title": "Shopee OTOP Mid Month — ของฝากก่อนลอยกระทง", "type": "Promotion", "format": "Mid Month / Gift", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "เห็ดกรอบ 100g + น้ำพริก 150g", "benefit": "Booth + Ads + Marketplace Marketing", "desc": "กลางเดือนเชื่อมบรรยากาศลอยกระทงและการเดินทาง ใช้สินค้าแพ็กพกง่ายและของฝากเป็นแกน ขอพื้นที่ OTOP/Gift หากมี", "hook": "กลางเดือนนี้ ซื้อกินระหว่างเที่ยวก็ได้ ซื้อฝากก็เหมาะ", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-11-17", "title": "พนักงานเลือกน้ำพริกประจำตัว", "type": "Entertainment", "format": "Team Content", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement", "product": "น้ำพริก 7 เมนู", "desc": "สัมภาษณ์เร็ว ๆ คนละ 3–5 วินาที เลือกเมนูที่ตรงกับนิสัยตัวเองและบอกเหตุผลสั้น ๆ", "hook": "ถ้าน้ำพริกบอกนิสัยได้ คนโรงงานจะเป็นเมนูอะไร?", "cta": "คุณคิดว่าตัวเองเป็นเมนูไหน", "platform": "facebook"}, {"date": "2026-11-18", "title": "ZAAP Silver — ลูกค้าประจำเริ่มคุ้มตรงไหน?", "type": "Education", "format": "Member Tier Spotlight", "platform": "nextgen", "channel": "Nextgen", "goal": "Member Upgrade", "product": "ZAAP Silver", "desc": "Silver สำหรับยอดสะสม 1,500 บาท ได้ส่วนลด 10% สูงสุด 200 บาท 1 สิทธิ์ต่อคน ใช้ในบิลถัดไป และไม่ร่วมโปรโมชั่นอื่น เหมาะเล่าในมุมลูกค้าประจำที่ต้องการส่วนลดแรงขึ้น", "hook": "พอซื้อสะสมถึง 1,500 บาท สิทธิ์จะขยับจาก 5% เป็น 10%", "cta": "เช็กยอดสะสมว่าใกล้ Silver แค่ไหน"}, {"date": "2026-11-18", "title": "พาช้อปร้านแซ่บบน ThaiMart — มีอะไรให้เลือกบ้าง", "type": "New Channel", "format": "Shop Tour", "channel": "ThaiMart", "goal": "Product Discovery", "product": "สินค้าบน ThaiMart", "desc": "พาไล่หมวดสินค้าในหน้าร้านจริงแบบเร็ว ๆ แยกเห็ดกรอบ น้ำพริก ขนาด และสินค้าที่เหมาะกับการซื้อฝาก", "hook": "เปิดร้านแซ่บบน ThaiMart แล้วมีอะไรอยู่ข้างในบ้าง?", "cta": "เจอเมนูที่ชอบแล้วกดเข้าดูรายละเอียดได้เลย"}, {"date": "2026-11-19", "title": "QC น้ำพริกหนึ่งล็อตตรวจอะไรบ้าง", "type": "Trust", "format": "Factory", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Trust", "product": "น้ำพริก", "desc": "อธิบาย QC แบบเห็นภาพ เช่น ลักษณะสินค้า การแพ็ก วันผลิต และการเก็บตัวอย่างตามกระบวนการโรงงาน", "hook": "ก่อนส่งถึงลูกค้า น้ำพริก 1 ล็อตต้องผ่านด่านอะไรบ้าง?", "cta": "กดติดตามซีรีส์เบื้องหลังโรงงาน", "platform": "facebook"}, {"date": "2026-11-19", "title": "ThaiMart ของกินเล่น — เลือกแบบไหนดี", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "แนะนำเห็ดกรอบหรือสินค้ากินเล่นในบริบทเลือกซื้อผ่าน ThaiMart โดยยึดสินค้าที่มีอยู่จริงในหน้าร้าน", "hook": "อยากได้ของกินเล่นจาก ThaiMart เริ่มดูตรงไหนก่อน?", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-11-20", "title": "Shopee OTOP Affiliate — ของฝากจากลำปาง", "type": "Promotion", "format": "Affiliate / Local Story", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "OTOP Gift Set จากลำปาง", "benefit": "Affiliate 10% + Marketplace Marketing", "desc": "ให้ครีเอเตอร์เล่า Local Story ลำปาง + OTOP 5 ดาว + โรงงาน เพื่อสร้าง Trust มากกว่าการพูดราคาอย่างเดียว", "hook": "ของฝากลำปางที่ไม่ได้มีไว้แค่วางโชว์ แต่เปิดแล้วกินได้จริง", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-11-20", "title": "ZAAP Gold — ลูกค้ามูลค่าสูง ได้ 15% สูงสุด 300 บาท", "type": "Education", "format": "Member Tier Spotlight", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Member Upgrade", "product": "ZAAP Gold", "desc": "Gold เมื่อยอดสะสมถึง 3,500 บาท ได้ส่วนลดสมาชิก 15% สูงสุด 300 บาท 1 สิทธิ์ต่อคน และใช้ในบิลถัดไป โดยไม่ร่วมโปรโมชั่นอื่น เน้นว่า Gold เป็น Tier สูงสุดของโครงสร้างปัจจุบัน", "hook": "3,500 บาทคือเส้นแบ่งไป ZAAP Gold แล้วสิทธิ์ต่างจาก Silver ยังไง?", "cta": "เช็กยอดสะสมและระดับสมาชิกก่อนช้อป"}, {"date": "2026-11-21", "title": "ลอยกระทงนี้ เตรียมของกินเล่นหรือยัง", "type": "Seasonal", "format": "Seasonal Lifestyle", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Awareness", "product": "เห็ดกรอบ / น้ำพริก", "desc": "ปูเทศกาลลอยกระทงด้วยภาพเตรียมออกไปเที่ยวหรือรวมกลุ่มกับเพื่อนและครอบครัว", "hook": "ลอยกระทงมีของพร้อมแล้ว แต่ของกินเล่นล่ะ?", "cta": "เตรียมของกินไว้ก่อนออกจากบ้าน", "platform": "facebook"}, {"date": "2026-11-23", "title": "คืนลอยกระทง ถ้ามีเพื่อน 4 คน เห็ดถังเดียวจะรอดไหม", "type": "Entertainment", "format": "Comedy", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement", "product": "เห็ดถัง 200 กรัม", "desc": "Situation comedy แบ่งของกินกัน 4 คน แต่ทุกคนหยิบเร็วมาก จบด้วยถังว่าง", "hook": "เพื่อน 4 คน + เห็ด 1 ถัง = อยู่ได้กี่นาที?", "cta": "แท็กเพื่อนมือไว", "platform": "facebook"}, {"date": "2026-11-24", "title": "สุขสันต์วันลอยกระทง — ลำปางยามค่ำ", "type": "Seasonal", "format": "Lifestyle", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Seasonal", "product": "Brand Lifestyle", "desc": "คอนเทนต์บรรยากาศวันลอยกระทง เชื่อมความเป็นลำปางและทีมงานแบบไม่เน้นขายตรง", "hook": "คืนนี้ลำปางสวยเป็นพิเศษ 🌕", "cta": "สุขสันต์วันลอยกระทงจากทีมแซ่บ", "platform": "facebook"}, {"date": "2026-11-25", "title": "Shopee OTOP Payday — ชุดใหญ่คุ้มปลายเดือน", "type": "Promotion", "format": "Payday", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "เห็ดถัง 200g 2 ถัง / น้ำพริก 150g SET", "benefit": "Ads + Affiliate 10% + ค่าคอม 4%", "desc": "Payday รอบพฤศจิกายนเน้นแพ็กใหญ่/ชุดหลายชิ้น ให้ Affiliate ช่วยปิดยอดและ Ads ดัน SKU ที่ต้องการเพิ่ม AOV", "hook": "ปลายเดือนนี้ ถ้าจะซื้อ OTOP ให้คุ้ม เลือกชุดใหญ่ก่อน", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-11-25", "title": "TikTok Payday — ปลายเดือนต้องเข้า Live", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Payday เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Payday รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-11-26", "title": "ThaiMart ของฝาก — ซื้อกินเองก็ได้ ซื้อฝากก็ดี", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "วางสินค้าในบริบทของฝากและของกินติดบ้าน พร้อมพาลูกค้าเข้าหน้าร้าน ThaiMart", "hook": "ถ้ากำลังหาของฝากกินได้จริง ลองดูร้านนี้ใน ThaiMart", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-11-26", "title": "ของฝากจากลำปาง ซื้ออะไรกลับบ้านดี", "type": "Product", "format": "Gift Content", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Gift Positioning", "product": "สินค้าสำหรับของฝาก", "desc": "วางแบรนด์ในบริบทของฝากจากลำปาง เน้นแพ็กเกจ พกง่าย และเลือกได้หลายเมนู", "hook": "กลับจากลำปาง จะซื้ออะไรฝากคนที่บ้านดี?", "cta": "ดูตัวเลือกของฝากที่ตะกร้า", "platform": "facebook"}, {"date": "2026-11-27", "title": "Birthday Privilege ใช้ยังไง? และใช้ซ้อนกับ Tier ได้ไหม", "type": "Education", "format": "FAQ / Member Benefit", "channel": "Nextgen", "goal": "Member Education", "product": "Birthday Privilege", "desc": "อธิบายว่า Birthday Privilege ลด 10% สูงสุด 300 บาท 1 สิทธิ์ และลดได้ทันที แต่เป็นสิทธิ์คนละประเภทกับส่วนลดตาม Tier ลูกค้าต้องเลือกใช้สิทธิ์ใดสิทธิ์หนึ่ง ไม่ได้ใช้ซ้อนกันในบิลเดียว", "hook": "วันเกิดแล้วมีทั้งส่วนลด Tier และ Birthday ใช้พร้อมกันได้ไหม?", "cta": "เช็กสิทธิ์ก่อนจ่าย แล้วเลือกสิทธิ์ที่เหมาะกับบิลนั้น", "platform": "nextgen"}, {"date": "2026-11-27", "title": "Shopee OTOP Gift Guide — เริ่มซื้อของฝากปลายปี", "type": "Promotion", "format": "Gift Campaign", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "Gift Set เห็ดกรอบ + น้ำพริก", "benefit": "Booth + Marketplace Marketing + Ads", "desc": "เริ่ม Gift Season ก่อนธันวาคม ทำเซ็ตแยกตามผู้รับ เช่น ฝากเพื่อน ฝากผู้ใหญ่ ฝากที่ทำงาน เพื่อให้ Shopee มี Asset ไปทำ Marketing ได้ง่าย", "hook": "ของฝากปีใหม่ไม่ต้องรอปลายเดือน เริ่มเลือกตั้งแต่ตอนนี้", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-11-28", "title": "ลูกค้าพูดถึงแซ่บปะล้ำปะเหลือว่าอะไรบ้าง", "type": "UGC", "format": "UGC Compilation", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Trust", "product": "สินค้าที่มี UGC", "desc": "รวมรีวิวข้อความ/วิดีโอที่ได้รับอนุญาต ให้เห็นหลายมุม เช่น รสชาติ ความกรอบ และการซื้อซ้ำ", "hook": "ไม่ให้แบรนด์พูดเอง วันนี้ให้ลูกค้าพูดแทน", "cta": "ใครเคยลองแล้ว ฝากรีวิวไว้ได้เลย", "platform": "facebook"}, {"date": "2026-11-30", "title": "TikTok เอาสต็อกออก — ปิดเดือนเคลียร์สต็อก", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Stock Out เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Stock Out รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-11-30", "title": "สิ้นเดือนแล้ว ของกินหมดตู้หรือยัง", "type": "Promotion", "format": "Month-end Sale", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Conversion", "product": "สินค้าขายดี", "desc": "ปิดเดือนแบบ light promotion ชวนเติม stock ก่อนเข้าธันวาคมและเริ่ม season ของฝาก", "hook": "เช็กตู้ก่อนเข้าเดือนใหม่ ของโปรดเหลือกี่ซอง?", "cta": "เติมสต๊อกก่อนหมดเดือน", "platform": "facebook"}, {"date": "2026-12-01", "title": "Facebook ทายเลขท้าย 2 ตัว — ถ้าถูกหวยช่วงสิ้นปี จะเอาเงินไปทำอะไร?", "type": "Engagement", "format": "Facebook Comment Activity / Year-end", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement / Comment", "product": "ของรางวัล: เห็ดเข็มทองอบกรอบแบบถัง 1 ถัง", "desc": "เปิดเดือนสุดท้ายของปีด้วยคำถามชวนคุยว่า ถ้าถูกหวยช่วงสิ้นปี อยากเอาเงินไปทำอะไร เช่น เที่ยว ซื้อของขวัญ เก็บเงิน หรือเลี้ยงครอบครัว พร้อมทายเลขท้าย 2 ตัว ของรางวัลรอบนี้เป็นเห็ดเข็มทองอบกรอบแบบถัง 1 ถัง", "hook": "เดือนสุดท้ายของปีแล้ว 🎉 ถ้าถูกหวยงวดนี้ คุณจะเอาเงินไปทำอะไรเป็นอย่างแรก?", "cta": "คอมเมนต์ “สิ่งที่อยากทำถ้าถูกหวย + เลขท้าย 2 ตัว”"}, {"date": "2026-12-01", "title": "Shopee OTOP December Gift Kickoff", "type": "Promotion", "format": "Gift Season Launch", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "OTOP Gift Set / เห็ดถัง / น้ำพริก 150g", "benefit": "Booth + Ads + Marketplace Marketing", "desc": "เปิดเดือนของขวัญด้วยภาพแพ็กเกจและชุดของฝาก เน้น OTOP ลำปางและสินค้าเปิดกินได้จริง เหมาะใช้พื้นที่ Booth/Marketing มาก", "hook": "ธันวาคมแล้ว OTOP แซ่บเข้าสู่โหมดของฝากเต็มตัว", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-12-01", "title": "เข้าสู่เดือนแห่งของขวัญแล้ว", "type": "Seasonal", "format": "Month Opener", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Gift Awareness", "product": "Gift / ของฝาก", "desc": "เปิดเดือนด้วยภาพแพ็กของขวัญ ของฝาก และ mood festive เตรียมวางสินค้าในบริบทการให้", "hook": "ธันวาคมแล้ว ปีนี้จะซื้อของฝากอะไรให้คนที่เรารัก?", "cta": "ติดตาม Gift Guide ทั้งเดือน", "platform": "facebook"}, {"date": "2026-12-03", "title": "ThaiMart เลือกน้ำพริกให้เข้ากับมื้ออาหาร", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "ทำคอนเทนต์สินค้าเชิงใช้งาน เช่น กินกับข้าว โจ๊ก ก๋วยเตี๋ยว แล้วจบด้วยการพาเข้า ThaiMart", "hook": "มื้อนี้มีข้าวร้อน ๆ แล้ว จะเลือกน้ำพริกอะไร?", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-12-03", "title": "ของฝากที่คนรับกินได้จริง", "type": "Product", "format": "Gift Idea", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Conversion", "product": "Gift Set", "desc": "พูด insight ของขวัญกินได้ ไม่กินพื้นที่ ไม่ต้องเดาไซซ์ และแบ่งกันได้", "hook": "ของขวัญบางอย่างวางไว้เฉย ๆ แต่ของอร่อยเปิดแล้วหมดเลย", "cta": "เลือกเซ็ตของฝากได้ที่ตะกร้า", "platform": "facebook"}, {"date": "2026-12-04", "title": "Gift Guide ผ่าน ThaiMart — ของฝากกินได้จริง", "type": "New Channel", "format": "Gift Guide + Shop Demo", "channel": "ThaiMart", "goal": "Gift Conversion", "product": "Gift / ของฝาก", "desc": "เชื่อม ThaiMart กับธีมของฝากเดือนธันวาคม แนะนำชุดสินค้าหรือขนาดที่เหมาะกับฝากเพื่อน ครอบครัว และที่ทำงาน", "hook": "ถ้าปีนี้อยากให้ของฝากที่เปิดแล้วกินได้เลย ลองดูแบบนี้", "cta": "เลือกของฝากแล้วดูรายละเอียดบน ThaiMart"}, {"date": "2026-12-05", "title": "Shopee OTOP Family Gift — ซื้อฝากคุณพ่อ", "type": "Promotion", "format": "Seasonal Gift", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "น้ำพริก 150g SET + เห็ดกรอบ", "benefit": "Ads + Affiliate 10% + Marketplace Marketing", "desc": "ผูกวันพ่อกับของกินในครอบครัว ให้ Affiliate ทำ Family Content และใช้ Ads ดันชุดที่ซื้อฝากได้", "hook": "ของฝากคุณพ่อที่ดีที่สุด อาจเป็นของอร่อยที่เปิดกินพร้อมกันได้", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-12-05", "title": "ของอร่อยซื้อฝากคุณพ่อ / กินพร้อมครอบครัว", "type": "Seasonal", "format": "Family Content", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Seasonal", "product": "น้ำพริก / เห็ดกรอบ", "desc": "คอนเทนต์อบอุ่นรอบโต๊ะอาหาร เน้นการกินร่วมกันในครอบครัว ไม่ขายแข็งเกินไป", "hook": "ของฝากคุณพ่อที่ดีที่สุด อาจเป็นมื้อที่ได้นั่งกินด้วยกัน", "cta": "สุขสันต์วันพ่อจากทีมแซ่บ", "platform": "facebook"}, {"date": "2026-12-06", "title": "ลูกค้าใหม่ Nextgen — ซื้อของฝากครบ 150 ลด 50", "type": "Promotion", "format": "Gift Season Evergreen Promo", "platform": "nextgen", "channel": "Nextgen", "goal": "New Customer Conversion", "product": "สินค้าบน Nextgen", "desc": "ปรับโปรลูกค้าใหม่เข้ากับฤดูกาลของฝากปลายปี ชวนลูกค้าใหม่เลือกสินค้าให้ครบ 150 บาท แล้วเช็กคูปองลด 50 บาทก่อนจ่าย โดยตรวจเงื่อนไขจริงก่อนโพสต์", "hook": "ซื้อของฝากครั้งแรกบน Nextgen อย่าลืมเช็กส่วนลด 50 บาท", "cta": "จัดตะกร้าให้ครบ 150 แล้วเช็กคูปองก่อนชำระ"}, {"date": "2026-12-07", "title": "วันหยุดนี้ เดินทางกลับบ้าน เอาอะไรติดรถดี", "type": "Lifestyle", "format": "Road Trip", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Product Use", "product": "เห็ดกรอบ", "desc": "จัดกระเป๋าเดินทางและ snack box สำหรับรถ เน้นหยิบง่าย แบ่งกันกินได้", "hook": "ก่อนสตาร์ตรถ เช็ก 3 อย่าง: มือถือ กระเป๋า...และของกิน", "cta": "แท็กเพื่อนร่วมทางที่ต้องเตรียมขนม", "platform": "facebook"}, {"date": "2026-12-08", "title": "ซื้อของฝากผ่าน Nextgen — อย่าลืมเช็กคูปองร้าน", "type": "New Channel", "format": "Gift + Coupon Content", "channel": "Nextgen", "goal": "Gift Conversion", "product": "Gift / ของฝาก", "desc": "ทำคอนเทนต์ซื้อของฝากพร้อมสอนให้เช็กคูปองของร้าน โดยวาง Nextgen เป็นอีกช่องทางก่อนเข้าสู่ช่วง 12.12", "hook": "ซื้อของฝากหลายชิ้น ยิ่งต้องเช็กคูปองก่อนกดจ่าย", "cta": "เลือกสินค้า → เก็บคูปอง → ตรวจยอดก่อนชำระ"}, {"date": "2026-12-09", "title": "Countdown 12.12 — เซ็ตไหนต้องเตรียมกด", "type": "Promotion", "format": "Sale Teaser", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Pre-Sale", "product": "เซ็ต 12.12", "desc": "ปูแคมเปญ 12.12 ด้วย Top Set และเหตุผลว่าแต่ละเซ็ตเหมาะกับใคร", "hook": "12.12 รอบสุดท้ายใหญ่ ๆ ของปี เล็งเซ็ตไว้หรือยัง?", "cta": "เซฟคลิป + กดติดตามรอโปร", "platform": "facebook"}, {"date": "2026-12-10", "title": "Shopee OTOP 12.12 Warm-up — Gift Wishlist", "type": "Promotion", "format": "Double Day Warm-up", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "Gift Set / SET เห็ด 3 / SET น้ำพริก 3", "benefit": "Ads + Affiliate 10%", "desc": "ก่อน 12.12 ให้ Affiliate ปล่อยคลิป Gift Guide และใช้ Ads ดึงคนเข้า Wishlist/Cart เพื่อรอปิดยอดวันใหญ่", "hook": "12.12 ใกล้แล้ว เซฟ OTOP Gift Set ไว้ก่อนค่อยกดวันจริง", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-12-10", "title": "ThaiMart Weekly Pick — สัปดาห์นี้หยิบอะไรดี", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "เลือก 1–3 SKU มาเป็น Weekly Pick ตามสินค้าที่ต้องการดันในสัปดาห์นั้น โดยสามารถแก้ชื่อสินค้าได้ก่อนโพสต์", "hook": "สัปดาห์นี้ถ้าจะหยิบจาก ThaiMart แค่หนึ่งอย่าง เลือกอะไรดี?", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-12-10", "title": "สรุป ZAAP Member 3 Tier ก่อนช้อปปลายปี", "type": "Education", "format": "Tier Summary / Infographic", "platform": "nextgen", "channel": "Nextgen", "goal": "Member Education", "product": "ZAAP Bronze / Silver / Gold", "desc": "สรุปอีกครั้งก่อนช่วงช้อปปลายปี: Bronze 0 บาท / 5%, Silver 1,500 บาท / 10% สูงสุด 200, Gold 3,500 บาท / 15% สูงสุด 300 โดยส่วนลดสมาชิกใช้ในบิลถัดไป ส่วน Birthday Privilege 10% สูงสุด 300 ลดได้ทันที", "hook": "ก่อนช้อปปลายปี เช็กก่อนว่าคุณอยู่ Bronze, Silver หรือ Gold", "cta": "เปิดหน้า Member แล้วเช็ก Tier ของตัวเอง"}, {"date": "2026-12-11", "title": "พรุ่งนี้ 12.12 — เช็กลิสต์ก่อนกดตะกร้า", "type": "Promotion", "format": "Fast Cut", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Traffic", "product": "สินค้าร่วมโปร", "desc": "สรุปเวลา โปร เซ็ต และ LIVE แบบเร็วที่สุด เหมาะกับ Reels/TikTok 8–12 วินาที", "hook": "ก่อนนอนคืนนี้ ทำ 3 อย่างไว้รอ 12.12", "cta": "ตั้งเตือน LIVE", "platform": "facebook"}, {"date": "2026-12-12", "title": "Facebook สนับสนุนแคมเปญ — 12.12 โปรใหญ่ปลายปี + Live", "type": "Promotion", "format": "Sale / Live", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Conversion", "product": "สินค้าร่วมโปร", "desc": "วันขายหลักปลายปี ทำคลิป Flash Deal หลายช่วงและใช้ไลฟ์เป็นศูนย์กลางการปิดยอด", "hook": "12.12 วันนี้ ดีลปลายปีเริ่มแล้ว!", "cta": "เข้า LIVE / กดตะกร้า", "platform": "facebook"}, {"date": "2026-12-12", "title": "Shopee OTOP 12.12 — Mega Gift Day", "type": "Promotion", "format": "Double Day", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "OTOP Gift Set + Hero Bundles", "benefit": "Ads + Affiliate 10% + Booth + Marketplace Marketing + ค่าคอม 4%", "desc": "ใช้ Benefit เต็มชุดในวัน 12.12 เน้น Gift Set และ Hero Bundle ที่ GP รองรับ โปรต้องคำนวณให้เหลือ Margin ก่อนส่งแคมเปญ", "hook": "12.12 คือวันเร่งยอดของฝาก OTOP ที่ใหญ่ที่สุดของเดือน", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-12-12", "title": "TikTok 12.12 Double Day — โปรใหญ่ปลายปี", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Double Day เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Double Day รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-12-14", "title": "เบื้องหลังแพ็กออเดอร์ 12.12", "type": "Social Proof", "format": "Packing BTS", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Trust", "product": "สินค้าจาก 12.12", "desc": "พาชมทีมแพ็กออเดอร์จริง เน้นความตั้งใจและจำนวนงานโดยไม่เปิดข้อมูลส่วนตัวลูกค้า", "hook": "หลังกล้อง 12.12 หน้าตาเป็นแบบนี้", "cta": "ใครสั่งรอบนี้ รอรับความแซ่บได้เลย", "platform": "facebook"}, {"date": "2026-12-15", "title": "Shopee OTOP Mid Month — ของฝากรอบสอง", "type": "Promotion", "format": "Mid Month", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "Gift Set / น้ำพริก 150g / เห็ด 100g", "benefit": "Ads + Marketplace Marketing", "desc": "หลัง 12.12 ยังมีลูกค้าที่พลาดรอบแรก ใช้ Mid Month ดึงกลับด้วยของฝาก SKU เข้าใจง่าย และสื่อสารเรื่องช่วงส่งปีใหม่", "hook": "พลาด 12.12 ยังทัน ของฝากรอบกลางเดือนยังเลือกได้", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-12-15", "title": "TikTok Mid Month — ดีลหลัง 12.12", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Mid Month เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Mid Month รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-12-16", "title": "3 เมนู Party เพิ่มเห็ดกรอบแล้วน่ากินขึ้น", "type": "Product", "format": "Recipe", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Product Use", "product": "เห็ดกรอบ", "desc": "ทำเมนูปาร์ตี้ง่าย ๆ เช่น สลัด ยำ และ snack platter เพิ่มเห็ดกรอบเป็น topping", "hook": "โต๊ะปาร์ตี้ดูเต็มขึ้นได้ ด้วยของหนึ่งซอง", "cta": "เซฟไว้จัดโต๊ะคริสต์มาส/ปีใหม่", "platform": "facebook"}, {"date": "2026-12-16", "title": "Facebook ทายเลขท้าย 2 ตัว — งวดส่งท้ายปี อยากให้ปีใหม่มีอะไรดี ๆ เกิดขึ้น?", "type": "Engagement", "format": "Facebook Comment Activity / Year-end", "platform": "facebook", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement / Comment", "product": "ของรางวัล: น้ำพริกอิ่มอกอิ่มใจ 3 หมูอิ่มอก", "desc": "กิจกรรมทายเลขช่วงกลางเดือนธันวาคม ใช้บรรยากาศใกล้สิ้นปี ชวนลูกค้าคุยว่า ถ้าถูกหวยช่วงสิ้นปีจะนำเงินไปทำอะไร หรืออยากให้ปีใหม่ของตัวเองเป็นแบบไหน พร้อมทายเลขท้าย 2 ตัว ของรางวัลตามแผนคือชุดน้ำพริกอิ่มอกอิ่มใจ 3 หมูอิ่มอก", "hook": "อีกไม่นานก็ปีใหม่แล้ว 🎁 ถ้าถูกหวยช่วงสิ้นปี คุณอยากเอาเงินไปทำอะไรให้ตัวเองหรือคนที่บ้าน?", "cta": "คอมเมนต์ “สิ่งที่อยากทำช่วงสิ้นปี + เลขท้าย 2 ตัว”"}, {"date": "2026-12-17", "title": "รู้จัก ThaiMart — อีกช่องทางสำหรับช้อปแซ่บ", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "แนะนำหน้าร้าน ThaiMart ให้ลูกค้ารู้ว่าสามารถเข้าดูสินค้าและสั่งซื้อแซ่บปะล้ำปะเหลือได้อีกช่องทาง", "hook": "ใครใช้ ThaiMart อยู่ ตอนนี้เจอร้านแซ่บแล้วนะ", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-12-18", "title": "Shopee OTOP Affiliate Gift Picks — 3 งบ 3 แบบ", "type": "Promotion", "format": "Affiliate / Gift Guide", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "40g SET / 100g SET / 150g Gift Set", "benefit": "Affiliate 10% + Ads", "desc": "ให้ครีเอเตอร์ทำ Gift Guide แยกตามงบและผู้รับ เพื่อให้สินค้าหลายขนาดมีเหตุผลในการเลือก และช่วยกระจายยอด", "hook": "ของฝากไม่ต้องงบเท่ากัน — จัด 3 ระดับให้เลือกง่าย", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-12-18", "title": "จับฉลากของขวัญในโรงงาน — ใครได้แซ่บกลับบ้าน", "type": "Entertainment", "format": "Team Fun", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Human Brand", "product": "สินค้าแบรนด์", "desc": "ให้ทีมจับของขวัญหรือสุ่มสินค้า สร้างโมเมนต์พนักงานและเสียงหัวเราะจริง", "hook": "จับฉลากปีนี้ ใครจะได้ของที่ตัวเองแพ็กทุกวันกลับบ้าน?", "cta": "อยากได้ชิ้นไหนที่สุด คอมเมนต์มา", "platform": "facebook"}, {"date": "2026-12-19", "title": "เช็ก Tier ปลายปี — Bronze / Silver / Gold ตอนนี้คุณอยู่ระดับไหน?", "type": "Education", "format": "Member Check / Year-end", "platform": "nextgen", "channel": "Nextgen", "goal": "Member Retention", "product": "ZAAP Member", "desc": "ชวนลูกค้าเช็ก Tier และยอดสะสมปลายปี พร้อมย้ำเกณฑ์ 0 / 1,500 / 3,500 บาท และสิทธิ์ส่วนลด 5% / 10% / 15% ตามระดับ เพื่อกระตุ้นการกลับมาซื้อซ้ำอย่างเข้าใจง่าย", "hook": "สิ้นปีแล้ว ลองเช็กดูว่าปีนี้คุณขึ้นถึง Tier ไหนแล้ว", "cta": "เข้า Nextgen แล้วเช็กระดับสมาชิกก่อนช้อปรอบถัดไป"}, {"date": "2026-12-20", "title": "Gift Guide — ฝากเพื่อน / ผู้ใหญ่ / ที่ทำงาน", "type": "Product", "format": "Guide", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Conversion", "product": "Gift Set", "desc": "ทำเป็น 3 persona พร้อมแนะนำชุดสินค้าและขนาดที่เหมาะกับแต่ละกลุ่ม", "hook": "ซื้อของฝากให้ใคร เลือกไม่เหมือนกันนะ", "cta": "เลือกคนรับ แล้วดูเซ็ตที่เหมาะในตะกร้า", "platform": "facebook"}, {"date": "2026-12-21", "title": "ลูกค้าเลือกซื้อแซ่บได้หลายช่องทาง — Nextgen / ThaiMart", "type": "New Channel", "format": "Channel Comparison", "channel": "Nextgen / ThaiMart", "goal": "Channel Awareness", "product": "ภาพรวมสินค้า", "desc": "ทำคลิปสั้นรวมช่องทางใหม่ทั้งสองช่อง ไม่จัดอันดับว่าช่องไหนดีกว่า แต่เน้นให้ลูกค้าเลือกช่องทางที่ใช้งานสะดวกและเช็กโปรของแต่ละแพลตฟอร์มในวันที่ซื้อ", "hook": "ไม่ได้ซื้อแซ่บได้แค่ช่องเดิมแล้วนะ", "cta": "เลือกช่องทางที่คุณใช้สะดวก แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-12-22", "title": "ปีใหม่บ้านใครต้องมีน้ำพริกติดโต๊ะบ้าง", "type": "Engagement", "format": "Relatable", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Engagement", "product": "น้ำพริก", "desc": "คอนเทนต์ relatable โต๊ะอาหารช่วงปีใหม่ ให้ทีมเล่าประสบการณ์บ้านตัวเองสั้น ๆ", "hook": "บ้านไหนพอญาติมาครบ น้ำพริกหายก่อนกับข้าวอีก?", "cta": "บ้านคุณเมนูไหนหมดก่อน", "platform": "facebook"}, {"date": "2026-12-23", "title": "Shopee OTOP Christmas Gift — ของกินแชร์กันได้", "type": "Promotion", "format": "Christmas / Gift", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "เห็ดถัง 200g + Gift Set", "benefit": "Booth + Ads + Marketplace Marketing", "desc": "คริสต์มาสเน้นสินค้าแชร์กันได้และภาพ Festive ใช้ Booth/Marketing Support สร้างหน้าร้านตามเทศกาล", "hook": "Christmas นี้ ให้ของที่แกะแล้วแบ่งกันกินได้เลย", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-12-24", "title": "Christmas Eve — Snack Party ด้วยแซ่บ", "type": "Seasonal", "format": "Lifestyle", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Seasonal", "product": "เห็ดกรอบ / น้ำพริก", "desc": "จัดโต๊ะ snack party โทน festive ผูกกับสินค้าที่หยิบกินและแบ่งกันง่าย", "hook": "คืนนี้ไม่ต้องทำโต๊ะใหญ่ ก็มี Christmas Party ได้", "cta": "ส่งคลิปนี้ให้คนที่ต้องเตรียมของกินคืนนี้", "platform": "facebook"}, {"date": "2026-12-24", "title": "ThaiMart พาช้อป — มีอะไรให้เลือกบ้าง", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "พาไล่หมวดเห็ดกรอบ น้ำพริก ขนาดและตัวเลือกต่าง ๆ ในหน้าร้านจริง", "hook": "เปิดร้านแซ่บบน ThaiMart แล้วมีอะไรอยู่ข้างในบ้าง?", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}, {"date": "2026-12-25", "title": "Merry Christmas จากทีมแซ่บปะล้ำปะเหลือ", "type": "Branding", "format": "Team Video", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Branding", "product": "Brand", "desc": "ทีมงานหลายฝ่ายส่งคำอวยพรสั้น ๆ ตัดสลับบรรยากาศโรงงานและสินค้า", "hook": "Merry Christmas จากลำปางถึงทุกบ้าน 🎄", "cta": "ขอบคุณที่อยู่กับแซ่บมาตลอดปี", "platform": "facebook"}, {"date": "2026-12-25", "title": "Shopee OTOP Payday Christmas — ซื้อฝากก่อนเดินทาง", "type": "Promotion", "format": "Payday / Gift", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "Gift Set + Travel Snack Set", "benefit": "Ads + Affiliate 10% + ค่าคอม 4%", "desc": "Payday รอบสุดท้ายก่อนปีใหม่ ใช้ Gift + Travel เป็นแกน ดึง Affiliate ทำคลิปก่อนเดินทางและ Ads เก็บคนที่กำลังซื้อฝากครอบครัว", "hook": "เงินเดือนออกตรง Christmas รอบนี้ ซื้อฝากก่อนกลับบ้าน", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-12-25", "title": "TikTok Payday / Christmas — โปรปลายเดือน", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Payday เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Payday รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-12-26", "title": "ส่วนลด Tier vs Birthday Privilege — เลือกใช้อันไหนดี?", "type": "Education", "format": "FAQ / Scenario", "platform": "nextgen", "channel": "Nextgen", "goal": "Member Education", "product": "ZAAP Member Benefits", "desc": "ทำสถานการณ์จำลองให้เข้าใจง่าย: ส่วนลด Tier ใช้ในบิลถัดไปตามอัตราของแต่ละระดับ ส่วน Birthday Privilege 10% สูงสุด 300 บาทลดทันที และสองสิทธิ์นี้เลือกใช้เพียงหนึ่งสิทธิ์ต่อบิล ไม่ซ้อนกัน", "hook": "ถ้ามีสิทธิ์วันเกิดกับสิทธิ์ Tier พร้อมกัน บิลนี้ควรเลือกอันไหน?", "cta": "เช็กยอดบิลและเงื่อนไข แล้วเลือกสิทธิ์ที่เหมาะที่สุด"}, {"date": "2026-12-27", "title": "ของกินติดรถสำหรับ Road Trip ปีใหม่", "type": "Lifestyle", "format": "List Content", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Product Use", "product": "เห็ดกรอบ / น้ำพริกขนาดพกง่าย", "desc": "แนะนำของกินก่อนเดินทางไกลและการจัด snack bag ให้หยิบง่าย", "hook": "ขับรถปีใหม่ไกล ๆ ห้ามลืมของกินข้างคนขับ", "cta": "เซฟเช็กลิสต์ก่อนออกเดินทาง", "platform": "facebook"}, {"date": "2026-12-29", "title": "Shopee OTOP Year-End Clearance — เคลียร์อย่างมีมูลค่า", "type": "Promotion", "format": "Year End", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "SKU ที่ต้องการเร่งหมุน + SET คุ้ม", "benefit": "Ads + Affiliate 10%", "desc": "Year-end Clearance ไม่ควรลดแบบทำลายภาพ OTOP ให้ทำเป็น SET คุ้ม/ของแถม/Bundle กับ SKU ที่ต้องการหมุน ใช้ Ads + Affiliate ช่วยเร่งยอด", "hook": "ส่งท้ายปี เคลียร์แบบคุ้มแต่ยังรักษามูลค่าสินค้า OTOP", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-12-29", "title": "TikTok เอาสต็อกออก — Year End Clearance", "type": "Promotion", "format": "Platform Promo / Sale Video", "platform": "tiktok", "channel": "TikTok ZAAP Official", "goal": "Conversion / Live Traffic", "product": "สินค้าร่วมโปรบน TikTok", "desc": "คอนเทนต์ขายสำหรับ TikTok Stock Out เน้นดีลของแพลตฟอร์ม สินค้าที่ร่วมรายการ และดึงคนเข้าตะกร้าหรือ Live โดยไม่ทำเป็นคอนเทนต์ Editorial ยาว", "hook": "Stock Out รอบนี้ ถ้าจะกดตะกร้า รอช่วงนี้ก่อน", "cta": "กดตะกร้า / เข้า Live เพื่อเช็กดีลล่าสุด"}, {"date": "2026-12-29", "title": "ZAAP Silver — ยอดสะสม 1,500 บาท ได้อะไรเพิ่ม?", "type": "Education", "format": "Evergreen Platform Content", "platform": "nextgen", "channel": "Nextgen", "goal": "Member / Channel Engagement", "product": "ZAAP Member / สินค้าบน Nextgen", "desc": "Silver ได้ส่วนลดสมาชิก 10% สูงสุด 200 บาท 1 สิทธิ์ต่อคน ใช้ในบิลถัดไป และไม่ร่วมโปรโมชั่นอื่น", "hook": "ยอดสะสมถึง 1,500 บาท สิทธิ์จะขยับแบบนี้", "cta": "เข้า Nextgen แล้วเช็กสิทธิ์ / หน้าร้านก่อนช้อป"}, {"date": "2026-12-29", "title": "ปีนี้เมนูไหนของแซ่บขายดีที่สุด?", "type": "Social Proof", "format": "Year Recap", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Social Proof", "product": "Top Products", "desc": "สรุปอันดับหรือเมนูเด่นของปีจากข้อมูลจริงเมื่อพร้อม ก่อนโพสต์ให้แทน placeholder ด้วยตัวเลขจริง", "hook": "ถ้าให้เดา เมนูอันดับ 1 ของปีนี้คืออะไร?", "cta": "คอมเมนต์คำตอบก่อนเฉลย", "platform": "facebook"}, {"date": "2026-12-30", "title": "รวมโมเมนต์โรงงาน / ทีมงาน / ลูกค้า ตลอดปี 2569", "type": "Branding", "format": "Recap", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Brand Love", "product": "Brand", "desc": "รวมภาพสำคัญทั้งทีม โรงงาน งานขาย รีวิว กิจกรรม และเบื้องหลังตลอดปี ตัดตามจังหวะเพลง", "hook": "365 วันของแซ่บ ผ่านอะไรด้วยกันมาบ้าง?", "cta": "ขอบคุณทุกคนที่เป็นส่วนหนึ่งของปีนี้", "platform": "facebook"}, {"date": "2026-12-31", "title": "Countdown ส่งท้ายปี + ขอบคุณลูกค้า", "type": "Branding", "format": "Emotional Recap", "channel": "Facebook แซ่บปะล้ำปะเหลือ", "goal": "Retention", "product": "Brand", "desc": "คลิปส่งท้ายปีโทนอบอุ่น ขอบคุณลูกค้า ทีมงาน และคู่ค้า พร้อม teaser ปีหน้าเล็กน้อย", "hook": "ก่อนปีนี้จะจบ มีหนึ่งคำที่เราอยากบอกทุกคน", "cta": "สวัสดีปีใหม่ แล้วเจอกันปี 2570", "platform": "facebook"}, {"date": "2026-12-31", "title": "Shopee OTOP New Year — ของฝากรอบสุดท้าย", "type": "Promotion", "format": "New Year Gift", "platform": "shopee", "channel": "Shopee OTOP / แซ่บปะล้ำปะเหลือ", "goal": "OTOP Campaign / Conversion", "product": "OTOP Gift Set / เห็ดกรอบ / น้ำพริก", "benefit": "Marketplace Marketing + Booth + Ads", "desc": "ปิดปีด้วยของฝากรอบสุดท้ายและ Brand Story OTOP ลำปาง เตรียมต่อ Campaign ระยะยาวถึง 30 ก.ย. 2570 โดยเก็บข้อมูลว่า SKU/Set ไหนตอบรับดี", "hook": "วันสุดท้ายของปี ส่ง OTOP ลำปางเป็นของฝากให้คนที่คุณคิดถึง", "cta": "เข้า Shopee ร้านแซ่บปะล้ำปะเหลือ / กดเก็บคูปอง / เช็กโปรแคมเปญก่อนชำระ"}, {"date": "2026-12-31", "title": "ThaiMart ของกินเล่น — เลือกแบบไหนดี", "type": "New Channel", "format": "Shop Demo / Product Content", "platform": "thaimart", "channel": "ThaiMart", "goal": "Channel Awareness / Conversion", "product": "สินค้าบน ThaiMart", "desc": "แนะนำเห็ดกรอบหรือสินค้ากินเล่นในบริบทเลือกซื้อผ่าน ThaiMart โดยยึดสินค้าที่มีอยู่จริงในหน้าร้าน", "hook": "อยากได้ของกินเล่นจาก ThaiMart เริ่มดูตรงไหนก่อน?", "cta": "เข้า ThaiMart แล้วค้นหาแซ่บปะล้ำปะเหลือ"}];
 const DEFAULT_MONTHS = [{"idx": 8, "name": "กันยายน", "title": "กันยายน — Facebook Main + Nextgen 1 / ThaiMart 1 ต่อสัปดาห์", "desc": "ตั้งแต่ 20 ก.ย. คุมจังหวะช่องทาง: Nextgen 1 ครั้ง + ThaiMart 1 ครั้งต่อสัปดาห์ นับจันทร์–อาทิตย์ ส่วนคอนเทนต์หลักลง Facebook"}, {"idx": 9, "name": "ตุลาคม", "title": "ตุลาคม — Facebook + Nextgen + ThaiMart + Shopee OTOP", "desc": "Facebook เป็นช่องหลัก, Nextgen 1 + ThaiMart 1 ต่อสัปดาห์ และ Shopee OTOP 2 ครั้ง/สัปดาห์ พร้อม TikTok Promo / TikTok Live แยกหน้า"}, {"idx": 10, "name": "พฤศจิกายน", "title": "พฤศจิกายน — 11.11 + Weekly Shopee OTOP Campaign", "desc": "Shopee OTOP 2 ครั้ง/สัปดาห์: Affiliate/Traffic 1 ครั้ง + Promo/Conversion 1 ครั้ง โดยข้อมูลช่องอื่นยังอยู่ครบ"}, {"idx": 11, "name": "ธันวาคม", "title": "ธันวาคม — 12.12 + OTOP Gift Season", "desc": "Shopee OTOP 2 ครั้ง/สัปดาห์ เน้น Gift Set / Affiliate / Ads / Booth / Marketing พร้อม Facebook หวย, Nextgen, ThaiMart และ TikTok Live"}];
+const OCTOBER_IMPORTANT_EVENTS = [
+  {
+    date:"2026-10-10",
+    title:"7-11 Double Digit 10.10",
+    type:"Promotion",
+    format:"Double Digit Campaign",
+    platform:"",
+    channel:"7-Eleven",
+    goal:"Campaign Awareness / Promotion",
+    product:"สินค้าที่ร่วมรายการ 7-Eleven",
+    desc:"วันแคมเปญ Double Digit 10.10 ของ 7-Eleven ใช้เป็นหมุดสำคัญสำหรับวางคอนเทนต์ โปรโมชัน และการสื่อสารสินค้าที่ร่วมรายการ",
+    hook:"10.10 รอบนี้ เตรียมพบโปรและสินค้าจากแซ่บปะล้ำปะเหลือที่ 7-Eleven",
+    cta:"ติดตามรายละเอียดโปรและตรวจสอบสินค้าที่ร่วมรายการ"
+  },
+  {
+    date:"2026-10-10",
+    title:"เทศกาลกินเจ 10–18 ตุลาคม 2569",
+    type:"Seasonal",
+    format:"ช่วงเทศกาลสำคัญ",
+    platform:"",
+    channel:"วันสำคัญ / เทศกาล",
+    goal:"Seasonal Planning",
+    product:"เห็ดเข็มทองอบกรอบสูตรเจ / น้ำพริกเห็ดเจ / รสเจ",
+    desc:"ช่วงเทศกาลกินเจ วันที่ 10–18 ตุลาคม 2569 ใช้เป็นกรอบเวลาหลักสำหรับคอนเทนต์สินค้าเจ โปรโมชัน เมนูอาหาร และ Live",
+    hook:"เริ่มเทศกาลกินเจ 10–18 ตุลาคม 2569",
+    cta:"วางคอนเทนต์และโปรสินค้าเจให้ครอบคลุมตลอดช่วงเทศกาล"
+  },
+  {
+    date:"2026-10-13",
+    title:"วันนวมินทรมหาราช",
+    type:"Seasonal",
+    format:"วันสำคัญ",
+    platform:"",
+    channel:"วันสำคัญ",
+    goal:"Calendar Awareness",
+    product:"",
+    desc:"วันอังคารที่ 13 ตุลาคม 2569 วันนวมินทรมหาราช หรือวันคล้ายวันสวรรคต พระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร",
+    hook:"วันนวมินทรมหาราช",
+    cta:"ใช้เป็นข้อมูลประกอบการวางแผนและตรวจสอบความเหมาะสมของคอนเทนต์ประจำวัน"
+  },
+  {
+    date:"2026-10-23",
+    title:"วันปิยมหาราช",
+    type:"Seasonal",
+    format:"วันสำคัญ",
+    platform:"",
+    channel:"วันสำคัญ",
+    goal:"Calendar Awareness",
+    product:"",
+    desc:"วันศุกร์ที่ 23 ตุลาคม 2569 วันปิยมหาราช",
+    hook:"วันปิยมหาราช",
+    cta:"ใช้เป็นข้อมูลประกอบการวางแผนและตรวจสอบความเหมาะสมของคอนเทนต์ประจำวัน"
+  },
+  {
+    date:"2026-10-26",
+    title:"Halloween Campaign 26–31 ตุลาคม 2569",
+    type:"Seasonal",
+    format:"Seasonal Campaign",
+    platform:"",
+    channel:"Halloween",
+    goal:"Seasonal Planning / Engagement / Conversion",
+    product:"เห็ดกรอบ / น้ำพริก / SET โปร Halloween",
+    desc:"ช่วงแคมเปญ Halloween วันที่ 26–31 ตุลาคม 2569 ใช้วางคอนเทนต์ธีมหลอน เกม กิจกรรม โปรโมชัน และ Live ต่อเนื่องถึงคืนวันที่ 31 ตุลาคม",
+    hook:"เข้าสู่สัปดาห์ Halloween 26–31 ตุลาคม",
+    cta:"เตรียมคอนเทนต์และโปร Halloween ให้ต่อเนื่องจนถึงวันที่ 31 ตุลาคม"
+  }
+];
+DEFAULT_EVENTS.push(...OCTOBER_IMPORTANT_EVENTS);
+
+const DOUBLE_DIGIT_LIVE_EVENTS = [
+  {
+    date:"2026-10-07",
+    title:"Live Double Digit — พี่กวาง ช่องแก๊งค์น้องแซ่บ (7 ต.ค.)",
+    type:"Promotion",
+    format:"TikTok Live Campaign",
+    platform:"tiktok",
+    channel:"ช่องแก๊งค์น้องแซ่บ",
+    goal:"GMV Live / Double Digit 7-11",
+    product:"สินค้าร่วมแคมเปญ Double Digit 7-11",
+    desc:"วันที่ 7 ตุลาคม 2569 ให้พี่กวางรับผิดชอบ Live ช่องแก๊งค์น้องแซ่บ เพื่อดันยอดช่วง Double Digit 7-11 เตรียมสินค้า โปร ตะกร้า และ Run down ให้พร้อมก่อนเริ่ม Live",
+    hook:"7 ต.ค. พี่กวาง Live ช่องแก๊งค์น้องแซ่บ",
+    cta:"ตรวจตารางเวลา โปร ตะกร้า และสินค้าที่จะขึ้นก่อน Live ทุกวัน"
+  },
+  {
+    date:"2026-10-07",
+    title:"ทีม Live ช่องน้องแซ่บซ่าพากิน — ขั้นต่ำ 5 ชั่วโมง",
+    type:"Promotion",
+    format:"Live Team Schedule",
+    platform:"tiktok",
+    channel:"น้องแซ่บซ่าพากิน",
+    goal:"GMV Live / Live Coverage",
+    product:"สินค้าร่วมแคมเปญ Double Digit 7-11",
+    desc:"ช่องน้องแซ่บซ่าพากินให้อุ๋งอิ๋งสลับทีม Live โดยพี่ทิวลิปไม่ลง Live ในช่วงนี้ กำหนดเวลา Live ขั้นต่ำ 5 ชั่วโมงขึ้นไปต่อรอบ เพื่อให้มีเวลาสะสม Traffic และดัน GMV Live",
+    hook:"อุ๋งอิ๋งสลับทีม Live / พี่ทิวลิปไม่ลง Live / ขั้นต่ำ 5 ชั่วโมง",
+    cta:"ล็อกคิวผู้ Live และช่วงเวลาให้ครบขั้นต่ำ 5 ชั่วโมงก่อนเริ่มแคมเปญ"
+  },
+  {
+    date:"2026-10-07",
+    title:"Content GMV Live 60 ชิ้น — Hook 42 / โปร Live 18",
+    type:"Promotion",
+    format:"GMV Live Content Plan",
+    platform:"tiktok",
+    channel:"ทีม Content",
+    goal:"Traffic to Live / GMV Live",
+    product:"คอนเทนต์ดึงคนเข้า Live ช่วง Double Digit 7-11",
+    desc:"ทีม Content ต้องลงคอนเทนต์สำหรับ GMV Live รวม 60 ชิ้น แบ่งเป็น Hook Clips 70% จำนวน 42 ชิ้น เพื่อดึงความสนใจและพาคนเข้า Live และคลิปบอกโปรโมชันเฉพาะ Live 30% จำนวน 18 ชิ้น เพื่อสื่อสารดีล เวลา และเหตุผลที่ควรเข้าชม Live",
+    hook:"เป้าหมาย 60 คอนเทนต์: Hook Clips 42 ชิ้น + โปรเฉพาะ Live 18 ชิ้น",
+    cta:"ทำตารางผลิต–ตรวจ–ลงคลิป และผูกทุกคลิปเข้ากับ GMV Live"
+  },
+  {
+    date:"2026-10-11",
+    title:"Live ช่องหลัก — พี่กวาง 10:00–15:00 น.",
+    type:"Promotion",
+    format:"TikTok Live Campaign",
+    platform:"tiktok",
+    channel:"TikTok ช่องหลัก",
+    goal:"GMV Live / Double Digit 7-11",
+    product:"สินค้าร่วมแคมเปญ Double Digit 7-11",
+    desc:"วันที่ 11 ตุลาคม 2569 พี่กวาง Live ช่องหลักช่วงเช้า เวลา 10:00–15:00 น. รวม 5 ชั่วโมง เตรียม Run down สินค้า โปร ตะกร้า และช่วงเรียกคนเข้า Live ให้พร้อมก่อนเวลา",
+    hook:"11 ต.ค. พี่กวาง Live ช่องหลัก 5 ชั่วโมงเต็ม",
+    cta:"ขึ้น Live เวลา 10:00 น. และดำเนินรายการต่อเนื่องถึง 15:00 น."
+  }
+];
+[
+  ["2026-10-08","8 ต.ค."],
+  ["2026-10-09","9 ต.ค."],
+  ["2026-10-10","10 ต.ค."]
+].forEach(([date,label])=>{
+  DOUBLE_DIGIT_LIVE_EVENTS.push({
+    date,
+    title:`Live Double Digit — พี่กวาง ช่องแก๊งค์น้องแซ่บ (${label})`,
+    type:"Promotion",
+    format:"TikTok Live Campaign",
+    platform:"tiktok",
+    channel:"ช่องแก๊งค์น้องแซ่บ",
+    goal:"GMV Live / Double Digit 7-11",
+    product:"สินค้าร่วมแคมเปญ Double Digit 7-11",
+    desc:`วันที่ ${label} 2569 ให้พี่กวางรับผิดชอบ Live ช่องแก๊งค์น้องแซ่บ เพื่อดันยอดช่วง Double Digit 7-11 เตรียมสินค้า โปร ตะกร้า และ Run down ให้พร้อมก่อนเริ่ม Live`,
+    hook:`${label} พี่กวาง Live ช่องแก๊งค์น้องแซ่บ`,
+    cta:"ตรวจตารางเวลา โปร ตะกร้า และสินค้าที่จะขึ้นก่อน Live"
+  });
+});
+DEFAULT_EVENTS.push(...DOUBLE_DIGIT_LIVE_EVENTS);
+
 const DEFAULT_SETTINGS = {
  title:"Content Calendar 2569",
  subtitle:"แซ่บปะล้ำปะเหลือ · กันยายน — ธันวาคม",
@@ -321,7 +553,12 @@ if(!Array.isArray(settings.platforms)){
  const old=settings.platformColors||{};
  settings.platforms=DEFAULT_SETTINGS.platforms.map(p=>({...p,color:old[p.name]||p.color}));
 }
-let currentMonth=8, selectedId=null, editingId=null, selectedDate="", viewMode=localStorage.getItem("zaap-view-mode")||"simple";
+const startupToday=new Date();
+const startupMonth=startupToday.getMonth();
+const calendarMonths=DEFAULT_MONTHS.map(m=>m.idx).sort((a,b)=>a-b);
+let currentMonth=calendarMonths.includes(startupMonth)?startupMonth:calendarMonths[0];
+let selectedId=null, editingId=null, selectedDate="", editingPromoDecision="planned", viewMode=localStorage.getItem("zaap-view-mode")||"simple";
+let eventDrag=null,suppressEventClick=false,suppressDayClick=false;
 
 function clone(v){return JSON.parse(JSON.stringify(v))}
 function load(k,d){try{return JSON.parse(localStorage.getItem(k))||clone(d)}catch(e){return clone(d)}}
@@ -334,7 +571,37 @@ DEFAULT_EVENTS.forEach((e,i)=>{const k=`${e.date}::${e.title}`;if(!existingEvent
 DEFAULT_MONTHS.forEach(dm=>{if(!months.some(m=>m.idx===dm.idx))months.push(clone(dm))});
 months.sort((a,b)=>a.idx-b.idx);
 events.sort((a,b)=>a.date.localeCompare(b.date)||a.title.localeCompare(b.title,'th'));
-events=events.map(e=>({...e,platform:e.platform||inferPlatform(e)}));
+function normalizeNextgenMemberPromo(e){
+ const platform=e.platform||inferPlatform(e),source=[e.title,e.channel,e.product,e.desc].join(" ");
+ const isNextgen=platform==="nextgen"||/Nextgen/i.test(e.channel||"");
+ const isMember=/Bronze|Silver|Gold|Tier|Birthday Privilege|Member/i.test(source);
+ if(!isNextgen||!isMember)return e;
+ const result={...e,platform,type:"Promotion"};
+ const fields=["title","desc","hook","cta","product","goal","format"];
+ fields.forEach(k=>{
+   let value=String(result[k]||"");
+   value=value.replace(/Bronze 5%, Silver 10% และ Gold 15%/g,"Bronze 5%, Silver 8% และ Gold 10%")
+     .replace(/Bronze 5%\s*\/\s*Silver 10%\s*\/\s*Gold 15%/g,"Bronze 5% / Silver 8% / Gold 10%")
+     .replace(/5%\s*\/\s*10%\s*\/\s*15%/g,"5% / 8% / 10%")
+     .replace(/ส่วนลด 5%\s*\/\s*10%\s*\/\s*15%/g,"ส่วนลด 5% / 8% / 10%")
+     .replace(/จาก 5% เป็น 10%/g,"จาก 5% เป็น 8%");
+   const specificSilver=/Silver/i.test(result.title||"")&&!/Bronze|Gold/i.test(result.title||"");
+   const specificGold=/Gold/i.test(result.title||"")&&!/Bronze|Silver/i.test(result.title||"");
+   const birthday=/Birthday Privilege|วันเกิด/i.test(result.title||"")||/Birthday Privilege/i.test(result.product||"");
+   if(specificSilver)value=value.replace(/10% สูงสุด 200 บาท/g,"8%").replace(/10%/g,"8%");
+   if(specificGold)value=value.replace(/15% สูงสุด 300 บาท/g,"10%").replace(/15%/g,"10%");
+   if(birthday)value=value.replace(/10% สูงสุด 300 บาท/g,"4%").replace(/10%/g,"4%");
+   result[k]=value;
+ });
+ const title=result.title||"";
+ if(/Birthday Privilege|วันเกิด/i.test(title))result.price="คูปองวันเกิด 4%";
+ else if(/Silver/i.test(title)&&!/Bronze|Gold/i.test(title))result.price="คูปองสมาชิก 8%";
+ else if(/Gold/i.test(title)&&!/Bronze|Silver/i.test(title))result.price="คูปองสมาชิก 10%";
+ else if(/Bronze/i.test(title)&&!/Silver|Gold/i.test(title))result.price="คูปองสมาชิก 5%";
+ else result.price="Bronze 5% · Silver 8% · Gold 10% · คูปองวันเกิด 4%";
+ return result;
+}
+events=events.map(e=>({...e,platform:e.platform||inferPlatform(e)})).map(normalizeNextgenMemberPromo);
 persist();
 
 const $=id=>document.getElementById(id);
@@ -348,7 +615,46 @@ function monthName(idx){return months.find(m=>m.idx===idx)?.name||""}
 function yearBE(y){return y+543}
 function fmtDate(s){const d=new Date(s+"T00:00:00"),dn=["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"],mn=["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"];return `วัน${dn[d.getDay()]}ที่ ${d.getDate()} ${mn[d.getMonth()]} ${yearBE(d.getFullYear())}`}
 function statusOf(id){return localStorage.getItem("zaap-status-v12-"+id)||localStorage.getItem("zaap-status-v4-"+id)||localStorage.getItem("zaap-status-v3-"+id)||"planned"}
-function statusColor(s){return {planned:"#fff",shooting:"#FFC400",editing:"#fff",ready:"#A8E6CF",posted:"#7BE495"}[s]||"#fff"}
+function statusColor(s){return {planned:"#fff",shooting:"#FFC400",editing:"#fff",ready:"#A8E6CF",posted:"#7BE495",approved:"#16A36A",rejected:"#EC0001"}[s]||"#fff"}
+function isEventDone(id){return localStorage.getItem("zaap-done-v1-"+id)==="1"}
+function setEventDone(id,done){if(done)localStorage.setItem("zaap-done-v1-"+id,"1");else localStorage.removeItem("zaap-done-v1-"+id)}
+function clearEventDrag(){
+ if(eventDrag?.timer)clearTimeout(eventDrag.timer);
+ document.querySelectorAll(".drag-target,.drag-origin").forEach(el=>el.classList.remove("drag-target","drag-origin"));
+ eventDrag?.button?.classList.remove("long-press-ready","dragging-source");eventDrag?.ghost?.remove();eventDrag?.hint?.remove();eventDrag=null;
+}
+function beginEventLongPress(ev,button,item){
+ if(ev.button!==undefined&&ev.button!==0)return;
+ eventDrag={id:item.id,button,startX:ev.clientX,startY:ev.clientY,active:false,target:null,timer:setTimeout(()=>{
+   if(!eventDrag||eventDrag.id!==item.id)return;
+   eventDrag.active=true;suppressEventClick=true;suppressDayClick=true;button.classList.remove("long-press-ready");button.classList.add("dragging-source");button.closest(".day")?.classList.add("drag-origin");
+   const ghost=document.createElement("div");ghost.className="drag-ghost";ghost.textContent=item.title;document.body.appendChild(ghost);eventDrag.ghost=ghost;
+   const hint=document.createElement("div");hint.className="drag-hint";hint.textContent="ลากไปวางวันที่ใหม่";document.body.appendChild(hint);eventDrag.hint=hint;
+   moveEventDrag(ev.clientX,ev.clientY);
+ },480)};
+ button.classList.add("long-press-ready");
+}
+function moveEventDrag(x,y){
+ if(!eventDrag?.active)return;
+ if(eventDrag.ghost){eventDrag.ghost.style.left=x+"px";eventDrag.ghost.style.top=y+"px"}
+ const target=document.elementFromPoint(x,y)?.closest(".day[data-date]");
+ if(target!==eventDrag.target){eventDrag.target?.classList.remove("drag-target");eventDrag.target=target||null;eventDrag.target?.classList.add("drag-target")}
+}
+function finishEventDrag(){
+ if(!eventDrag)return;
+ const {active,target,id}=eventDrag;
+ if(active&&target){
+   const item=events.find(e=>e.id===id),newDate=target.dataset.date;
+   if(item&&newDate&&item.date!==newDate){const oldDate=item.date;item.date=newDate;events.sort((a,b)=>a.date.localeCompare(b.date)||a.title.localeCompare(b.title));persist();clearEventDrag();render();toast(`ย้ายจาก ${fmtDate(oldDate)} ไป ${fmtDate(newDate)} แล้ว`)}else clearEventDrag();
+ }else clearEventDrag();
+ setTimeout(()=>{suppressEventClick=false;suppressDayClick=false},80);
+}
+document.addEventListener("pointermove",ev=>{
+ if(!eventDrag)return;
+ if(!eventDrag.active&&Math.hypot(ev.clientX-eventDrag.startX,ev.clientY-eventDrag.startY)>9){clearEventDrag();return}
+ if(eventDrag.active){ev.preventDefault();moveEventDrag(ev.clientX,ev.clientY)}
+},{passive:false});
+document.addEventListener("pointerup",finishEventDrag);document.addEventListener("pointercancel",clearEventDrag);
 function slugifyPlatform(name){return String(name||"platform").trim().toLowerCase().replace(/[^a-z0-9ก-๙]+/g,"-").replace(/^-|-$/g,"")||("platform-"+Date.now())}
 function getPlatform(idOrName){
  return settings.platforms.find(p=>p.id===idOrName||p.name===idOrName)||null;
@@ -441,23 +747,30 @@ function openDay(dateKey){
 function render(){
  applySettings();refillFilters();renderViewToggle();
  const cfg=months.find(m=>m.idx===currentMonth),all=events.filter(e=>new Date(e.date+"T00:00:00").getMonth()===currentMonth);
- $("summaryTitle").textContent=cfg.title;$("summaryDesc").textContent=cfg.desc;$("statEvents").textContent=all.length;$("statPromo").textContent=all.filter(e=>e.type==="Promotion").length;$("statChannels").textContent=all.filter(e=>e.type==="New Channel").length;$("allEventsCount").textContent=events.length;$("monthTitle").textContent=`${cfg.name} 2569`;
+ const mainActivity=(cfg.title.includes("—")?cfg.title.split("—").slice(1).join("—").trim():cfg.title);
+ $("summaryTitle").textContent=`เดือน ${cfg.name} : กิจกรรมหลัก ${mainActivity}`;$("summaryTotal").textContent=`รายการคอนเทนต์เดือน${cfg.name}ทั้งหมด ${all.length} รายการ`;$("allEventsCount").textContent=events.length;$("monthTitle").textContent=`${cfg.name} 2569`;
  const visible=getVisible(),year=2026,first=new Date(year,currentMonth,1),days=new Date(year,currentMonth+1,0).getDate(),start=(first.getDay()+6)%7,prevDays=new Date(year,currentMonth,0).getDate(),cells=Math.ceil((start+days)/7)*7;
  $("calendar").innerHTML="";
  for(let i=0;i<cells;i++){
   let day,cm=currentMonth,out=false;if(i<start){day=prevDays-start+i+1;cm=currentMonth-1;out=true}else if(i>=start+days){day=i-(start+days)+1;cm=currentMonth+1;out=true}else day=i-start+1;
   const key=`${year}-${String(cm+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`,arr=out?[]:visible.filter(e=>e.date===key);
-  const d=document.createElement("div");d.className="day"+(out?" outside":"")+(i%7>=5?" weekend":"")+(arr.length?" has-event":"");
-  d.innerHTML=`<div class="day-head"><div class="day-label">${arr.length?arr.length+" รายการ":""}</div><div class="daynum">${day}</div></div><div class="events"></div>`;
+  const todayKey=`${startupToday.getFullYear()}-${String(startupToday.getMonth()+1).padStart(2,"0")}-${String(startupToday.getDate()).padStart(2,"0")}`;
+  const isToday=!out&&key===todayKey;
+  const d=document.createElement("div");d.className="day"+(out?" outside":"")+(i%7>=5?" weekend":"")+(arr.length?" has-event":"")+(isToday?" today":"");if(!out)d.dataset.date=key;
+  const dayLabel=isToday?(arr.length?`วันนี้ · ${arr.length} รายการ`:"วันนี้"):(arr.length?arr.length+" รายการ":"");
+  d.innerHTML=`<div class="day-head"><div class="day-label">${dayLabel}</div><div class="daynum">${day}</div></div><div class="events"></div>`;
   const w=d.querySelector(".events");
   const showArr=(viewMode==="simple"?arr.slice(0,2):arr);
   showArr.forEach(e=>{
-    const b=document.createElement("button");
-    b.className="event";b.dataset.type=e.type;
+    const b=document.createElement("div");b.setAttribute("role","button");b.tabIndex=0;
+    b.className="event has-check"+(isEventDone(e.id)?" completed":"");b.dataset.type=e.type;
     const pc=platformColor(e);if(pc){b.style.background=pc;b.style.color=readableText(pc)}
     const p=getPlatform(inferPlatform(e));
-    b.innerHTML=`<span class="event-title">${esc(e.title)}</span><span class="event-meta">${p?esc(p.name)+" · ":""}${esc(e.channel)} · ${esc(e.format)}</span><span class="status-dot" style="background:${statusColor(statusOf(e.id))}"></span>`;
-    b.onclick=(ev)=>{ev.stopPropagation();openDetail(e.id)};
+    b.innerHTML=`<input class="event-check" type="checkbox" aria-label="ทำกิจกรรมนี้เสร็จแล้ว" ${isEventDone(e.id)?"checked":""}><span class="event-title">${esc(e.title)}</span><span class="event-meta">${p?esc(p.name)+" · ":""}${esc(e.channel)} · ${esc(e.format)}</span><span class="status-dot" style="background:${statusColor(statusOf(e.id))}"></span>`;
+    const check=b.querySelector(".event-check");check.onpointerdown=ev=>ev.stopPropagation();check.onclick=ev=>ev.stopPropagation();check.onchange=ev=>{setEventDone(e.id,ev.target.checked);b.classList.toggle("completed",ev.target.checked);toast(ev.target.checked?"ทำเครื่องหมายว่าเสร็จแล้ว":"นำเครื่องหมายเสร็จแล้วออก")};
+    b.onpointerdown=ev=>beginEventLongPress(ev,b,e);
+    b.onclick=(ev)=>{ev.stopPropagation();if(suppressEventClick)return;openDetail(e.id)};
+    b.onkeydown=ev=>{if((ev.key==="Enter"||ev.key===" ")&&ev.target===b){ev.preventDefault();openDetail(e.id)}};
     w.appendChild(b);
   });
   if(viewMode==="simple" && arr.length>2){
@@ -469,6 +782,7 @@ function render(){
   }
   if(!out){
     d.onclick=()=>{
+      if(suppressDayClick)return;
       if(arr.length){ openDay(key); }
       else { openEditor(null,key); }
     };
@@ -478,32 +792,42 @@ function render(){
 }
 function openDetail(id){
  selectedId=id;const e=events.find(x=>x.id===id);if(!e)return;
+ $("detailBg").classList.toggle("promotion-mode",e.type==="Promotion");
  $("detailHead").className="modal-head "+modalClass(e.type);
  const pid=inferPlatform(e),p=getPlatform(pid),pc=p?p.color:"";$("detailHead").style.background="";$("detailHead").style.color="";
  if(pc){$("detailHead").style.background=pc;$("detailHead").style.color=readableText(pc)}
  $("modalDate").textContent=fmtDate(e.date);$("modalTitle").textContent=e.title;$("modalSubtitle").textContent=`${e.type} · ${e.goal}`;$("modalChips").innerHTML=`<span class="chip">${esc(e.type)}</span><span class="chip">${esc(e.channel)}</span><span class="chip">${esc(e.format)}</span>`;
- $("detailPlatform").textContent=p?p.name:"ไม่ระบุ";$("detailChannel").textContent=e.channel;$("detailFormat").textContent=e.format;$("detailGoal").textContent=e.goal;$("detailProduct").textContent=e.product;$("detailBenefit").textContent=e.benefit||"—";$("detailDesc").textContent=e.desc;$("detailHook").textContent=e.hook;$("detailCTA").textContent=e.cta;$("statusSelect").value=statusOf(e.id);openBg("detailBg");
+ $("detailPlatform").textContent=p?p.name:"ไม่ระบุ";$("detailPrice").textContent=e.price||"ยังไม่ระบุ";$("detailChannel").textContent=e.channel;$("detailFormat").textContent=e.format;$("detailGoal").textContent=e.goal;$("detailProduct").textContent=e.product;$("detailBenefit").textContent=e.benefit||"—";$("detailDesc").textContent=e.desc;$("detailHook").textContent=e.hook;$("detailCTA").textContent=e.cta;$("statusSelect").value=statusOf(e.id);
+ const promoStatus=statusOf(e.id);$("approvePromo").classList.toggle("active",promoStatus==="approved");$("rejectPromo").classList.toggle("active",promoStatus==="rejected");openBg("detailBg");
 }
 function openEditor(id=null,presetDate=""){
- editingId=id;const e=id?events.find(x=>x.id===id):{date:presetDate||`2026-${String(currentMonth+1).padStart(2,"0")}-01`,title:"",type:"Product",format:"",platform:$("platformFilter").value||"tiktok",channel:"ZAAP Official",goal:"",product:"",benefit:"",desc:"",hook:"",cta:""};
+ editingId=id;const e=id?events.find(x=>x.id===id):{date:presetDate||`2026-${String(currentMonth+1).padStart(2,"0")}-01`,title:"",type:"Product",format:"",platform:$("platformFilter").value||"tiktok",channel:"ZAAP Official",goal:"",product:"",benefit:"",price:"",desc:"",hook:"",cta:""};
  $("editorTitle").textContent=id?"แก้ไขคอนเทนต์":"เพิ่มคอนเทนต์";
  $("fPlatform").innerHTML='<option value="">ไม่ระบุแพลตฟอร์ม</option>'+settings.platforms.map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join("");
  $("fPlatform").value=e.platform||inferPlatform(e)||"";
- [["fDate","date"],["fTitle","title"],["fType","type"],["fFormat","format"],["fChannel","channel"],["fGoal","goal"],["fProduct","product"],["fBenefit","benefit"],["fDesc","desc"],["fHook","hook"],["fCTA","cta"]].forEach(([a,b])=>$(a).value=e[b]||"");
+ [["fDate","date"],["fTitle","title"],["fType","type"],["fFormat","format"],["fChannel","channel"],["fGoal","goal"],["fProduct","product"],["fBenefit","benefit"],["fPrice","price"],["fDesc","desc"],["fHook","hook"],["fCTA","cta"]].forEach(([a,b])=>$(a).value=e[b]||"");
+ $("editorBg").classList.toggle("promotion-mode",e.type==="Promotion");
+ editingPromoDecision=id?statusOf(id):"planned";$("fApprovePromo").classList.toggle("active",editingPromoDecision==="approved");$("fRejectPromo").classList.toggle("active",editingPromoDecision==="rejected");
  openBg("editorBg");
 }
 function openBg(id){$(id).classList.add("open");document.body.style.overflow="hidden"}function closeBg(id){$(id).classList.remove("open");if(!document.querySelector(".modal-bg.open,.drawer-bg.open"))document.body.style.overflow=""}
 document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>closeBg(b.dataset.close));document.querySelectorAll(".modal-bg").forEach(bg=>bg.onclick=e=>{if(e.target===bg)closeBg(bg.id)});$("settingsBg").onclick=e=>{if(e.target===$("settingsBg"))closeBg("settingsBg")};
 
 $("addEventBtn").onclick=()=>openEditor();$("editCurrent").onclick=()=>{closeBg("detailBg");openEditor(selectedId)};$("addOnThisDay").onclick=()=>{closeBg("dayBg");openEditor(null,selectedDate)};$("simpleViewBtn").onclick=()=>{viewMode="simple";localStorage.setItem("zaap-view-mode",viewMode);render()};$("detailViewBtn").onclick=()=>{viewMode="detail";localStorage.setItem("zaap-view-mode",viewMode);render()};
+$("fType").onchange=()=>$("editorBg").classList.toggle("promotion-mode",$("fType").value==="Promotion");
+$("fApprovePromo").onclick=()=>{editingPromoDecision="approved";$("fApprovePromo").classList.add("active");$("fRejectPromo").classList.remove("active")};
+$("fRejectPromo").onclick=()=>{editingPromoDecision="rejected";$("fRejectPromo").classList.add("active");$("fApprovePromo").classList.remove("active")};
 $("saveEvent").onclick=()=>{
- const obj={date:$("fDate").value,title:$("fTitle").value.trim(),type:$("fType").value.trim(),format:$("fFormat").value.trim(),platform:$("fPlatform").value,channel:$("fChannel").value.trim(),goal:$("fGoal").value.trim(),product:$("fProduct").value.trim(),benefit:$("fBenefit").value.trim(),desc:$("fDesc").value.trim(),hook:$("fHook").value.trim(),cta:$("fCTA").value.trim()};
+ const obj={date:$("fDate").value,title:$("fTitle").value.trim(),type:$("fType").value.trim(),format:$("fFormat").value.trim(),platform:$("fPlatform").value,channel:$("fChannel").value.trim(),goal:$("fGoal").value.trim(),product:$("fProduct").value.trim(),benefit:$("fBenefit").value.trim(),price:$("fPrice").value.trim(),desc:$("fDesc").value.trim(),hook:$("fHook").value.trim(),cta:$("fCTA").value.trim()};
  if(!obj.date||!obj.title){toast("กรุณาใส่วันที่และชื่อคอนเทนต์");return}
- if(editingId){const i=events.findIndex(e=>e.id===editingId);events[i]={...events[i],...obj}}else{obj.id="custom-"+Date.now();events.push(obj)}
+ if(editingId){const i=events.findIndex(e=>e.id===editingId);events[i]={...events[i],...obj};obj.id=editingId}else{obj.id="custom-"+Date.now();events.push(obj)}
+ if(obj.type==="Promotion"&&["approved","rejected"].includes(editingPromoDecision))localStorage.setItem("zaap-status-v12-"+obj.id,editingPromoDecision);
  events.sort((a,b)=>a.date.localeCompare(b.date)||a.title.localeCompare(b.title));persist();closeBg("editorBg");render();toast("บันทึกคอนเทนต์แล้ว");
 }
 $("deleteCurrent").onclick=()=>{if(!selectedId)return;if(confirm("ลบคอนเทนต์นี้ออกจากปฏิทินใช่ไหม?")){events=events.filter(e=>e.id!==selectedId);persist();closeBg("detailBg");render();toast("ลบแล้ว")}};
 $("statusSelect").onchange=e=>{if(selectedId){localStorage.setItem("zaap-status-v12-"+selectedId,e.target.value);render()}};
+$("approvePromo").onclick=()=>{if(!selectedId)return;localStorage.setItem("zaap-status-v12-"+selectedId,"approved");$("approvePromo").classList.add("active");$("rejectPromo").classList.remove("active");render();toast("Approve โปรโมชั่นแล้ว")};
+$("rejectPromo").onclick=()=>{if(!selectedId)return;localStorage.setItem("zaap-status-v12-"+selectedId,"rejected");$("rejectPromo").classList.add("active");$("approvePromo").classList.remove("active");render();toast("ตั้งเป็น Non-approve แล้ว")};
 $("copyBrief").onclick=async()=>{const e=events.find(x=>x.id===selectedId);if(!e)return;const p=getPlatform(inferPlatform(e));const t=`${fmtDate(e.date)}\n${e.title}\n\nแพลตฟอร์ม: ${p?p.name:"ไม่ระบุ"}\nช่อง: ${e.channel}\nรูปแบบ: ${e.format}\nเป้าหมาย: ${e.goal}\nสินค้า: ${e.product}\nBenefit: ${e.benefit||"-"}\n\nแนวทาง: ${e.desc}\n\nHook: ${e.hook}\nCTA: ${e.cta}`;try{await navigator.clipboard.writeText(t);toast("คัดลอกบรีฟแล้ว")}catch(err){toast("คัดลอกไม่สำเร็จ")}};
 
 function renderPlatformSettings(){
@@ -523,7 +847,9 @@ function buildSettings(){
  const pairs=[["Red","red"],["Off","off"],["Yellow","yellow"],["Green","green"],["Black","black"]];
  pairs.forEach(([A,k])=>{$("hex"+A).value=settings.colors[k];$("color"+A).value=settings.colors[k];$("hex"+A).oninput=e=>{if(/^#[0-9a-f]{6}$/i.test(e.target.value))$("color"+A).value=e.target.value};$("color"+A).oninput=e=>$("hex"+A).value=e.target.value});
  renderPlatformSettings();
- $("monthSettings").innerHTML=months.map(m=>`<div class="field" style="margin-bottom:8px"><label>${m.name} — หัวข้อ</label><input class="input month-title-input" data-idx="${m.idx}" value="${esc(m.title)}"></div><div class="field" style="margin-bottom:14px"><label>${m.name} — คำอธิบาย</label><textarea class="textarea month-desc-input" data-idx="${m.idx}">${esc(m.desc)}</textarea></div>`).join("");
+ const activeMonth=months.find(m=>m.idx===currentMonth)||months[0];
+ $("monthSettingsTitle").textContent=`ข้อความสรุปเดือน${activeMonth.name}`;
+ $("monthSettings").innerHTML=`<div class="field" style="margin-bottom:8px"><label>${activeMonth.name} — หัวข้อ</label><input class="input month-title-input" data-idx="${activeMonth.idx}" value="${esc(activeMonth.title)}"></div><div class="field" style="margin-bottom:14px"><label>${activeMonth.name} — คำอธิบาย</label><textarea class="textarea month-desc-input" data-idx="${activeMonth.idx}">${esc(activeMonth.desc)}</textarea></div>`;
 }
 $("settingsBtn").onclick=()=>{buildSettings();openBg("settingsBg")};
 $("newPlatformColor").oninput=e=>$("newPlatformHex").value=e.target.value;
@@ -545,36 +871,96 @@ $("saveSettings").onclick=()=>{
  document.querySelectorAll(".month-title-input").forEach(x=>months.find(m=>m.idx===+x.dataset.idx).title=x.value);document.querySelectorAll(".month-desc-input").forEach(x=>months.find(m=>m.idx===+x.dataset.idx).desc=x.value);
  persist();render();toast("บันทึกการตั้งค่าแล้ว");
 }
-$("exportBtn").onclick=()=>{const data={version:12,events,months,settings,status:Object.fromEntries(events.map(e=>[e.id,statusOf(e.id)]))};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="ZAAP_Content_Calendar_Backup_COMPLETE_Shopee_OTOP.json";a.click();URL.revokeObjectURL(a.href);toast("Export แล้ว")};
-$("importFile").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(d.events)events=d.events;if(d.months)months=d.months;if(d.settings)settings=d.settings;if(d.status)Object.entries(d.status).forEach(([id,s])=>localStorage.setItem("zaap-status-v12-"+id,s));persist();render();buildSettings();toast("Import สำเร็จ")}catch(err){toast("ไฟล์ JSON ไม่ถูกต้อง")}e.target.value=""};
-$("resetBtn").onclick=()=>{if(confirm("คืนค่าปฏิทินเริ่มต้นทั้งหมด? การแก้ไขที่ยังไม่ได้ Export จะหายไป")){events=clone(DEFAULT_EVENTS).map((e,i)=>({...e,id:"e-"+i+"-"+Date.now()}));months=clone(DEFAULT_MONTHS);settings=clone(DEFAULT_SETTINGS);Object.keys(localStorage).filter(k=>(k.startsWith("zaap-status-v12-")||k.startsWith("zaap-status-v4-")||k.startsWith("zaap-status-v3-"))).forEach(k=>localStorage.removeItem(k));persist();buildSettings();render();toast("คืนค่าเริ่มต้นแล้ว")}};
+$("exportBtn").onclick=()=>{const data={version:13,events,months,settings,status:Object.fromEntries(events.map(e=>[e.id,statusOf(e.id)])),done:Object.fromEntries(events.map(e=>[e.id,isEventDone(e.id)]))};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="ZAAP_Content_Calendar_Backup_COMPLETE_Shopee_OTOP.json";a.click();URL.revokeObjectURL(a.href);toast("Export แล้ว")};
+$("importFile").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(d.events)events=d.events;if(d.months)months=d.months;if(d.settings)settings=d.settings;if(d.status)Object.entries(d.status).forEach(([id,s])=>localStorage.setItem("zaap-status-v12-"+id,s));if(d.done)Object.entries(d.done).forEach(([id,done])=>setEventDone(id,done));persist();render();buildSettings();toast("Import สำเร็จ")}catch(err){toast("ไฟล์ JSON ไม่ถูกต้อง")}e.target.value=""};
+$("resetBtn").onclick=()=>{if(confirm("คืนค่าปฏิทินเริ่มต้นทั้งหมด? การแก้ไขที่ยังไม่ได้ Export จะหายไป")){events=clone(DEFAULT_EVENTS).map((e,i)=>({...e,id:"e-"+i+"-"+Date.now()}));months=clone(DEFAULT_MONTHS);settings=clone(DEFAULT_SETTINGS);Object.keys(localStorage).filter(k=>(k.startsWith("zaap-status-v12-")||k.startsWith("zaap-status-v4-")||k.startsWith("zaap-status-v3-")||k.startsWith("zaap-done-v1-"))).forEach(k=>localStorage.removeItem(k));persist();buildSettings();render();toast("คืนค่าเริ่มต้นแล้ว")}};
 
 $("prevMonth").onclick=()=>{if(currentMonth>8){currentMonth--;render()}};$("nextMonth").onclick=()=>{if(currentMonth<11){currentMonth++;render()}};
 ["searchInput","platformFilter","channelFilter","typeFilter"].forEach(id=>$(id).addEventListener(id==="searchInput"?"input":"change",render));document.querySelectorAll("[data-quick]").forEach(b=>b.onclick=()=>{$("typeFilter").value=b.dataset.quick||"";render()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){["detailBg","dayBg","editorBg","settingsBg"].forEach(id=>closeBg(id))}});
 
+const LIVE_PRODUCT_RUNDOWNS = {
+  "2026-09-19": [
+    {no:1,time:"19:00–19:05",sku:"—",product:"กล่าวเปิด Live / พูดคุยดึงคน / แจ้งโปรและวิธีกดตะกร้า",price:"—"},
+    {no:2,time:"19:06–19:11",sku:"1730887614711957741",product:"SET 3 ซอง 100 กรัม แถม 2",price:"359.-"},
+    {no:3,time:"19:12–19:17",sku:"1733147737958810861",product:"SET 2 ซอง 100 กรัม แถม 1",price:"259.-"},
+    {no:4,time:"19:18–19:23",sku:"1731221952874514669",product:"SET เห็ดถัง 2",price:"409.-"},
+    {no:5,time:"19:24–19:29",sku:"1737326827290461421",product:"วิงซ์เจ 100 กรัม",price:"169.-"},
+    {no:6,time:"19:30–19:35",sku:"1737326831024440557",product:"ต้มยำเจ 100 กรัม",price:"169.-"},
+    {no:7,time:"19:36–19:41",sku:"1737347147130242285",product:"โนริสาหร่ายเจ 100 กรัม",price:"169.-"},
+    {no:8,time:"19:42–19:47",sku:"1731095955353733357",product:"เห็ดถัง 200 กรัม",price:"269.-"},
+    {no:9,time:"19:48–19:53",sku:"1734461753744655597",product:"เห็ดถัง + รีฟิล",price:"349.-"},
+    {no:10,time:"19:54–19:59",sku:"1729752239297825005",product:"น้ำพริก 3 กระปุก แถมเห็ดฝอย 2",price:"399.-"},
+    {no:11,time:"20:00–20:05",sku:"1733398106311918829",product:"น้ำพริก 3 กระปุก แถมเห็ดฝอย 1",price:"299.-"},
+    {no:12,time:"20:06–20:11",sku:"1729941765508401389",product:"น้ำพริกคางกุ้ง",price:"209.-"},
+    {no:13,time:"20:12–20:17",sku:"1730887614711957741",product:"SET 3 ซอง 100 กรัม แถม 2",price:"359.-"},
+    {no:14,time:"20:18–20:23",sku:"1732283040135088365",product:"เห็ดทอดอบกรอบ 100 กรัม",price:"169.-"},
+    {no:15,time:"20:24–20:29",sku:"1737346244570154221",product:"SET เห็ด 3 ซอง เจ แถม 2",price:"359.-"},
+    {no:16,time:"20:30–20:35",sku:"1730015217011493101",product:"น้ำพริก 40 กรัม 3 ซอง",price:"199.-"},
+    {no:17,time:"20:36–20:41",sku:"1729730195282102509",product:"น้ำพริกกากหมู 150 กรัม",price:"179.-"},
+    {no:18,time:"20:42–20:47",sku:"1729753319000148205",product:"น้ำพริกเห็ดกรอบ ดั้งเดิม 150 กรัม",price:"179.-"},
+    {no:19,time:"20:48–20:53",sku:"1729941732421372141",product:"น้ำพริกหนังไก่กรอบ 200 กรัม",price:"209.-"},
+    {no:20,time:"20:54–21:00",sku:"—",product:"รวม 6 ตะกร้าแรก",price:"—"}
+  ]
+};
+
 function formatLiveDate(dateStr){
  const d=new Date(dateStr+"T00:00:00");
+ const ds=["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"];
  const ms=["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
- return `เสาร์ ${d.getDate()} ${ms[d.getMonth()]} 2569`;
+ return `${ds[d.getDay()]} ${d.getDate()} ${ms[d.getMonth()]} ${d.getFullYear()+543}`;
 }
-function renderLivePage(){
+function getLiveDateMap(){
+ try{return JSON.parse(localStorage.getItem("zaap-live-date-map-v1")||"{}")}catch(e){return {}}
+}
+function displayLiveDate(key){return getLiveDateMap()[key]||key}
+const LIVE_EDIT_FIELDS=[
+ "liveThemeTitle","liveThemeDesc","liveThemeNote",
+ "liveOutfitTitle","liveOutfit","liveAccessories","liveSet","liveHostRoles","liveMetaNote",
+ "liveOpeningScript","liveSourceText","liveClosingScript"
+];
+let liveEditMode=false;
+function liveEditStorageKey(date){return "zaap-live-edit-v1-"+date}
+function getLiveEdits(date){
+ try{return JSON.parse(localStorage.getItem(liveEditStorageKey(date))||"{}")}catch(e){return {}}
+}
+function applyLiveEdits(date){
+ const saved=getLiveEdits(date);
+ LIVE_EDIT_FIELDS.forEach(id=>{if(saved[id]!==undefined&&$(id))$(id).textContent=saved[id]});
+}
+function setLiveEditMode(on){
+ liveEditMode=on;
+ $("livePage").classList.toggle("live-editing",on);
+ LIVE_EDIT_FIELDS.forEach(id=>{const el=$(id);if(el)el.contentEditable=on?"true":"false"});
+ $("editLiveBtn").classList.toggle("hidden",on);
+ $("saveLiveBtn").classList.toggle("hidden",!on);
+ $("cancelLiveBtn").classList.toggle("hidden",!on);
+ $("liveDateSelect").disabled=on;
+ $("liveDateEditWrap").classList.toggle("hidden",!on);
+ if(on)$("liveDateEdit").value=displayLiveDate($("liveDateSelect").value);
+ $("printLiveBtn").disabled=on;
+ if(on){const first=$("liveThemeTitle");if(first)first.focus()}
+}
+function renderLivePage(preferredDate){
  const sel=$("liveDateSelect");
  if(!sel.options.length){
-   Object.keys(LIVE_THEMES).sort().forEach(date=>{
+   Object.keys(LIVE_THEMES).sort((a,b)=>displayLiveDate(a).localeCompare(displayLiveDate(b))).forEach(date=>{
      const [emojiTitle,desc,note]=LIVE_THEMES[date];
-     const o=document.createElement("option");o.value=date;o.textContent=`${formatLiveDate(date)} — ${emojiTitle}`;sel.appendChild(o);
+     const savedTitle=getLiveEdits(date).liveThemeTitle;
+     const menuTitle=savedTitle&&savedTitle.includes("·")?savedTitle.split("·").slice(1).join("·").trim():emojiTitle;
+     const o=document.createElement("option");o.value=date;o.textContent=`${formatLiveDate(displayLiveDate(date))} — ${menuTitle}`;sel.appendChild(o);
    });
  }
- const date=sel.value||Object.keys(LIVE_THEMES).sort()[0];
+ const date=(typeof preferredDate==="string"&&LIVE_THEMES[preferredDate])?preferredDate:(sel.value||Object.keys(LIVE_THEMES).sort()[0]);
  sel.value=date;
+ const shownDate=displayLiveDate(date);
  const [title,desc,note]=LIVE_THEMES[date];
- $("liveThemeTitle").textContent=`${formatLiveDate(date)} · ${title}`;
+ $("liveThemeTitle").textContent=`${formatLiveDate(shownDate)} · ${title}`;
  $("liveThemeDesc").textContent=desc;
- $("liveThemeChips").innerHTML=`<span class="chip">19:00–21:00</span><span class="chip">Run down ทุก 5 นาที</span><span class="chip">${esc(note)}</span>`;
+ $("liveThemeChips").innerHTML=`<span class="chip">18:55–21:00</span><span class="chip">เวลาไม่ทับกัน</span><span class="chip" id="liveThemeNote" data-live-edit>${esc(note)}</span>`;
  if($("liveClosingScript")){
    $("liveClosingScript").textContent = date==="2026-09-19"
-    ? "“หมดเวลาการแข่งขันคืนนี้แล้ว 🏐 ก่อนปิดสนาม ใครเพิ่งเข้ามาให้เช็กตะกร้ารอบสุดท้ายนะคะ คืนนี้เราเล่นครบทั้งเซ็ตเห็ดขายดี น้ำพริก และ 3 รสเจใหม่ ใครยังเลือกไม่ถูกพิมพ์ถามไว้ได้เลย ขอบคุณทุกคนที่มาเชียร์ทีม ZAAP ด้วยกันตั้งแต่หนึ่งทุ่ม กด Follow ไว้ แล้วเสาร์หน้า 19:00 เจอกันธีมใหม่ค่ะ”"
+    ? "ช่วง 20:54–21:00 รวม 6 ตะกร้าแรกให้ลูกค้าเลือกอีกครั้ง ย้ำราคาและคูปองตามหน้าจอ อ่านคำถามสุดท้าย ขอบคุณผู้ชม และชวนกด Follow ก่อนปิด Live เวลา 21:00"
     : "Closing Script จะอัปเดตพร้อม Run down เมื่อได้รายการขายล่าสุดก่อนถึงวัน Live";
  }
 
@@ -595,30 +981,33 @@ function renderLivePage(){
    $("liveMetaNote").textContent="รอบนี้จัดทำรายละเอียดเฉพาะ Live วันที่ 19 ก.ย. ก่อน";
  }
 
- const rundown=LIVE_RUNDOWNS[date];
+ const rundown=LIVE_PRODUCT_RUNDOWNS[date]||LIVE_RUNDOWNS[date];
  const body=$("liveRundownBody");body.innerHTML="";
  if(date==="2026-09-19"){
    $("liveSourceText").textContent="อ้างอิงรายการขายช่วง 1–16 ก.ย. 2569: ให้น้ำหนักสินค้าที่ทำยอดจาก LIVE ของผู้ขายสูง เช่น SET เห็ด 3×100g + แถมเห็ดฝอย 2 ซอง, SET เห็ด 2×100g + แถม 1 ซอง, SET เห็ดถัง 200g 2 ถัง + แถมน้ำพริกเห็ดเจ 40g และแทรก 3 รสใหม่เจ วิงซ์แซ่บ / ต้มยำ / โนริ เพื่อดันสินค้าใหม่";
  }else{
    $("liveSourceText").textContent="รอไฟล์รายการขายล่าสุดช่วงก่อนถึงวันเสาร์ แล้วค่อยจัดลำดับสินค้าและเขียนสคริปต์ใหม่สำหรับ Live วันนั้น";
  }
-
  if(!rundown){
    $("livePendingNote").classList.remove("hidden");
    $("livePendingNote").textContent="Run down วันนี้ยังไม่ล็อก — จะอัปเดตจากรายการสินค้าที่ขายจริงช่วงก่อนถึงวันเสาร์ เพื่อให้ลำดับสินค้าและสคริปต์ตรงกับสถานการณ์ล่าสุด";
    $("liveRundownTable").classList.add("hidden");
    $("liveOpeningScript").textContent=`ธีม “${desc}” ถูกวางไว้แล้ว แต่ Opening Script และ Run down จะเขียนใหม่เมื่อมีรายการขายล่าสุดก่อนถึงวัน Live`;
+   applyLiveEdits(date);
    return;
  }
 
  $("livePendingNote").classList.add("hidden");
  $("liveRundownTable").classList.remove("hidden");
- $("liveOpeningScript").textContent=`“สวัสดีค่า วันนี้ ZAAP Volleyball Match Day เปิดสนามแล้ว! ใครพร้อมเชียร์พร้อมช้อปพิมพ์ 🏐 มาเลยค่ะ คืนนี้ 19:00–21:00 เราจะรันสินค้าทุก 5 นาที มีทั้งเซ็ตเห็ดที่ช่วงนี้ขายดีใน Live, น้ำพริก และ 3 รสเจใหม่ วิงซ์แซ่บ ต้มยำ และโนริ ระหว่างทางจะมีเกมโหวตทีมและ Scoreboard ให้เล่นกัน โปรหรือคูปองให้ทุกคนดูจากหน้าจอของตัวเองนะคะ เพราะแต่ละช่วงอาจไม่เหมือนกัน เริ่มเกมด้วยเซ็ตแรกเลยค่ะ!”`;
+ $("liveOpeningScript").textContent=`18:55 ขึ้น Live พูดคุย ทักทาย และดึงคนเข้าห้อง จากนั้นเวลา 19:00–19:05 กล่าวเปิด Live แจ้งโปร วิธีเช็กราคาและคูปองบนหน้าจอ พร้อมบอกให้ลูกค้ากดตะกร้า ก่อนเริ่มขึ้นสินค้ารายการแรกเวลา 19:06`;
  rundown.forEach(s=>{
    const tr=document.createElement("tr");
-   tr.innerHTML=`<td class="live-time">${esc(s.time)}</td><td class="live-product">${esc(s.product)}</td><td>${esc(s.angle)}</td><td>${esc(s.script)}</td><td>${esc(s.cta)}</td>`;
+   tr.innerHTML=s.no
+    ? `<td><strong>${esc(s.no)}</strong></td><td class="live-time">${esc(s.time)}</td><td>${esc(s.sku)}</td><td class="live-product">${esc(s.product)}</td><td><strong>${esc(s.price)}</strong></td>`
+    : `<td>—</td><td class="live-time">${esc(s.time)}</td><td>—</td><td class="live-product">${esc(s.product)}</td><td>—</td>`;
    body.appendChild(tr);
  });
+ applyLiveEdits(date);
 }
 function showPage(page){
  const live=page==="live";
@@ -630,8 +1019,33 @@ function showPage(page){
 }
 $("calendarPageBtn").onclick=()=>showPage("calendar");
 $("livePageBtn").onclick=()=>showPage("live");
-$("liveDateSelect").onchange=renderLivePage;
+$("liveDateSelect").onchange=()=>renderLivePage();
 $("printLiveBtn").onclick=()=>window.print();
+$("editLiveBtn").onclick=()=>setLiveEditMode(true);
+$("liveDateEdit").onchange=()=>{
+ const v=$("liveDateEdit").value;if(!v)return;
+ const current=$("liveThemeTitle").textContent;
+ const theme=current.includes("·")?current.split("·").slice(1).join("·").trim():current;
+ $("liveThemeTitle").textContent=`${formatLiveDate(v)} · ${theme}`;
+};
+$("saveLiveBtn").onclick=()=>{
+ const date=$("liveDateSelect").value;
+ const newDate=$("liveDateEdit").value;
+ if(!newDate){toast("กรุณาเลือกวันที่ Live");return}
+ const duplicate=Object.keys(LIVE_THEMES).some(k=>k!==date&&displayLiveDate(k)===newDate);
+ if(duplicate){toast("วันที่นี้มีอยู่ในรายการ Live แล้ว");return}
+ const data={};
+ LIVE_EDIT_FIELDS.forEach(id=>{const el=$(id);if(el)data[id]=el.textContent.trim()});
+ localStorage.setItem(liveEditStorageKey(date),JSON.stringify(data));
+ const dateMap=getLiveDateMap();
+ if(newDate===date)delete dateMap[date];else dateMap[date]=newDate;
+ localStorage.setItem("zaap-live-date-map-v1",JSON.stringify(dateMap));
+ setLiveEditMode(false);
+ $("liveDateSelect").innerHTML="";
+ renderLivePage(date);
+ toast("บันทึกวันที่และข้อมูล TikTok Live แล้ว");
+};
+$("cancelLiveBtn").onclick=()=>{setLiveEditMode(false);renderLivePage();toast("ยกเลิกการแก้ไขแล้ว")};
 
 applySettings();render();
 </script>
